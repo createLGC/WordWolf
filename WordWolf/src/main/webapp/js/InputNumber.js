@@ -14,12 +14,14 @@ $(function(){
         	timestamp: e.timestamp,
         	cal: Number($(this).data('cal'))
         };
+
         //クリックは単一の処理に留める
         if(e.type === 'click'){
             spinnerCal();
             arySpinnerCtrl = {};
             return false;
         }
+
         //長押し時の処理
         setTimeout(function(){
             //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理

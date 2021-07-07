@@ -14,23 +14,35 @@
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </div>
-<div id="player_input_container"></div>
-<input type="submit" value="決定">
+<form action="" method="post">
+	<div id="player_input_container"></div>
+	<input type="submit" value="決定">
+</form>
 <template id="player_input">
 	<p >プレイヤー名:<input type="text"></p>
 </template>
 <script>
+$(window).on('load', ()=>{
+	for(let i = 0; i < $('.counter1').first().val(); i++){
+		addPlayerInput(i);
+	}
+});
+function addPlayerInput(num){
+	$(document.getElementById('player_input').content.cloneNode(true))
+	.attr('name', "playerName" + num)
+	.appendTo("#player_input_container");
+}
+function removePlayerInput(){
+	$("#player_input_container")
+	.children()
+	.last()
+	.remove();
+}
 function onChangeNumber(newNum, oldNum){
 	if(newNum > oldNum){
-		console.log("add");
-		$(document.getElementById('player_input').content.cloneNode(true))
-		.appendTo("#player_input_container");
+		addPlayerInput(newNum);
 	}else if(newNum < oldNum){
-		console.log("remove");
-		$("#player_input_container")
-		.children()
-		.last()
-		.remove();
+		removePlayerInput();
 	}	
 }
 </script>
