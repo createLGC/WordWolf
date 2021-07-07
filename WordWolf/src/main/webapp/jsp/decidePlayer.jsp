@@ -41,6 +41,8 @@
 <input type="submit" value="決定">
 <script>
 $(function(){
+	
+	$('input[type=number]');
     
     var arySpinnerCtrl = [];
     var spin_speed = 20; //変動スピード
