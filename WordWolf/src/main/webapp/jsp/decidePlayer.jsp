@@ -5,31 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
-<style>
-.btnspinner{
-    -ms-user-select: none;
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.spinner_area input{
-    padding: 11px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 18px;
-    width: auto;
-    vertical-align: middle;
-    /* デフォルトのスピナーを消す */
-    -webkit-appearance: none;
-    -moz-appearance:textfield;
-}
-
-.spinner_area input[type="button"]{
-    cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="../css/InputNumber.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -43,6 +19,21 @@
 <template id="player_input">
 	<p >プレイヤー名:<input type="text"></p>
 </template>
-<script src="../js/decidePlayer.js"></script>
+<script>
+function onChangeNumber(newNum, oldNum){
+	if(newNum > oldNum){
+		console.log("add");
+		$(document.getElementById('player_input').content.cloneNode(true))
+		.appendTo("#player_input_container");
+	}else if(newNum < oldNum){
+		console.log("remove");
+		$("#player_input_container")
+		.children()
+		.last()
+		.remove();
+	}	
+}
+</script>
+<script src="../js/InputNumber.js"></script>
 </body>
 </html>

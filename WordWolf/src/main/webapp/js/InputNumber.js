@@ -51,18 +51,7 @@ $(function(){
 		}
 		
 		//プレーヤー名入力欄を増減させる
-		if(target.val() > oldNum){
-			console.log("add");
-			$(document.getElementById('player_input').content.cloneNode(true))
-			.appendTo("#player_input_container");
-		}else if(target.val() < oldNum){
-			console.log("remove");
-			$("#player_input_container")
-			.children()
-			.last()
-			.remove();
-		}
-		
+		onChangeNumber?.(target.val(), oldNum);
     }
   
 });
