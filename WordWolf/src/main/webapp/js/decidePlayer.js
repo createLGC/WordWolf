@@ -2,9 +2,6 @@
  * jquery使用
  */
 $(function(){
-	
-	const playerInputs = [];
-   
     let arySpinnerCtrl = {};
     const SPIN_SPEED = 20; //変動スピード
     
@@ -33,7 +30,7 @@ $(function(){
     });
     
     //長押し解除時 画面スクロールも解除に含む
-    $(document).on('touchend mouseup scroll', function(e){
+    $(document).on('touchend mouseup scroll', function(){
         if(arySpinnerCtrl.interval){
             clearInterval(arySpinnerCtrl.interval);
             arySpinnerCtrl = {};
@@ -43,31 +40,27 @@ $(function(){
     //変動計算関数
     function spinnerCal(){
     	const target = $(arySpinnerCtrl.target);
-    	const num = Number(target.val()) + arySpinnerCtrl.cal;
-        if(num > Number(target.data('max'))){
+    	const oldNum = Number(target.val())
+		const newNum = oldNum + arySpinnerCtrl.cal;
+        if(newNum > Number(target.data('max'))){
             target.val(Number(target.data('max')));
-        }else if(Number(target.data('min')) > num){
+        }else if(Number(target.data('min')) > newNum){
             target.val(Number(target.data('min')));
         }else{
-            target.val(num);
+            target.val(newNum);
 		}
 		
 		//プレーヤー名入力欄を増減させる
-		if(target.val() > num){
-			for(let i = num; i < target.val(); i++){
-				$("#player_input")
-				.children()
-				.first()
-				.clone()
-				.appendTo("#player_input_container");
-			}
-		}else if(target.val() < num){
-			for(let i = num; i > target.val(); i--){
-				$("#player_input")
-				.children()
-				.last()
-				.remove();
-			}
+		if(target.val() > oldNum){
+			console.log("add");
+			$(document.getElementById('player_input').content.cloneNode(true))
+			.appendTo("#player_input_container");
+		}else if(target.val() < oldNum){
+			console.log("remove");
+			$("#player_input_container")
+			.children()
+			.last()
+			.remove();
 		}
 		
     }
