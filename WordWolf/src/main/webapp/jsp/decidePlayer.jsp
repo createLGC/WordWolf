@@ -5,31 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
-<style>
-.btnspinner{
-    -ms-user-select: none;
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-.spinner_area input{
-    padding: 11px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 18px;
-    width: auto;
-    vertical-align: middle;
-    /* デフォルトのスピナーを消す */
-    -webkit-appearance: none;
-    -moz-appearance:textfield;
-}
-
-.spinner_area input[type="button"]{
-    cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="../css/InputNumber.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -38,11 +14,38 @@
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </div>
-<div id="player_input_container"></div>
-<input type="submit" value="決定">
+<form action="" method="post">
+	<div id="player_input_container"></div>
+	<input type="submit" value="決定">
+</form>
 <template id="player_input">
 	<p >プレイヤー名:<input type="text"></p>
 </template>
-<script src="../js/decidePlayer.js"></script>
+<script>
+$(window).on('load', ()=>{
+	for(let i = 0; i < $('.counter1').first().val(); i++){
+		addPlayerInput(i);
+	}
+});
+function addPlayerInput(num){
+	$(document.getElementById('player_input').content.cloneNode(true))
+	.attr('name', "playerName" + num)
+	.appendTo("#player_input_container");
+}
+function removePlayerInput(){
+	$("#player_input_container")
+	.children()
+	.last()
+	.remove();
+}
+function onChangeNumber(newNum, oldNum){
+	if(newNum > oldNum){
+		addPlayerInput(newNum);
+	}else if(newNum < oldNum){
+		removePlayerInput();
+	}	
+}
+</script>
+<script src="../js/InputNumber.js"></script>
 </body>
 </html>
