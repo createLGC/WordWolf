@@ -10,7 +10,7 @@
 </head>
 <body>
 人数<div class="spinner_area">
-    <input type="number" value="3" class="counter1" data-max="10" data-min="0">
+    <input type="number" value="3" class="counter1" data-max="10" data-min="3">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </div>
