@@ -14,23 +14,29 @@ public class ThemeDAO {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
         
-    public static String[] find(String themeType) {
+    public static List<String> find(String themeType) {
         
-        String sql = "SELECT * FROM theme;";
+        String sql = 
+        	"SELECT theme.theme FROM theme " + 
+        	"JOIN theme_type " + 
+        	"ON theme.theme_type_id = theme_type.id" + 
+        	"HAVING theme_type.name = ?" + 
+        	"ORDER BY RAND() LIMIT 2";
         
-        List<String> themeTypeList = new ArrayList<>();
+        List<String> themeList = new ArrayList<>();
         
-        try (	Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-              PreparedStatement statement = connection.prepareStatement(sql); ) {
-                        
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql); ) {
+            
+        	statement.setString(1, themeType);
             ResultSet result = statement.executeQuery();
             
             while(result.next()) {
-            	String name = result.getString("name");
-            	themeTypeList.add(name);
+            	String theme = result.getString("theme.theme");
+            	themeList.add(theme);
             }
             
-            return themeTypeList;
+            return themeList;
             
         } catch (SQLException e) {
         
