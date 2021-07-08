@@ -8,8 +8,13 @@
 </head>
 <body>
 <h1>投票</h1>
-<p>さんの投票は、</p>
-<p><input type="radio" name="wolfName[]"></p>
-<a href="./result.jsp">結果</a>
+<form>
+	<p>さんの投票は、</p>
+	<p><input type="radio" name="wolfName[]"></p>
+	<input type="submit">
+</form>
+<script>
+//カルーセル使用
+</script>
 </body>
 </html>

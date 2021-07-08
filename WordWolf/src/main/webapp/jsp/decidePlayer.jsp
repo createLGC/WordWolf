@@ -27,6 +27,14 @@ $(window).on('load', ()=>{
 		addPlayerInput(i);
 	}
 });
+$("input[type=submit]").on('click', e=>{
+	e.preventDefault();
+	const texts = document.querySelector("input[type=text]");
+	for(int i = 0;i < texts.length; i++){
+		if(!texts[i].value) return;
+	}
+	document.forms[0].submit();
+});
 function addPlayerInput(num){
 	$(document.getElementById('player_input').content.cloneNode(true))
 	.appendTo("#player_input_container");

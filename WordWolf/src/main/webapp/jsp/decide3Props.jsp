@@ -50,6 +50,6 @@ List<String> themeTypeList = (List<String>) request.getAttribute("themeTypeList"
 <br><br>
 <input type="submit" value="ルール決定">
 </form>
-<script src="../js/InputNumber.css"></script>
+<script src="../js/InputNumber.js"></script>
 </body>
 </html>
