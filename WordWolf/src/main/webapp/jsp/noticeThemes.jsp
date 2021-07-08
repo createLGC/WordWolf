@@ -13,7 +13,7 @@
 
 <br>
 <br>
-<a href="./noticeThemes.jsp">次のプレイヤーへ</a>
+<a>次のプレイヤーへ</a>
 <a href="./playGame.jsp">ゲームスタート</a>
 </body>
 </html>

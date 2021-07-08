@@ -14,12 +14,12 @@
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </div>
-<form action="" method="post">
+<form action="/WordWolf/DecidePlayerServlet" method="post">
 	<div id="player_input_container"></div>
 	<input type="submit" value="決定">
 </form>
 <template id="player_input">
-	<p >プレイヤー名:<input type="text"></p>
+	<p >プレイヤー名:<input type="text" name="playerName[]"></p>
 </template>
 <script>
 $(window).on('load', ()=>{
@@ -29,7 +29,6 @@ $(window).on('load', ()=>{
 });
 function addPlayerInput(num){
 	$(document.getElementById('player_input').content.cloneNode(true))
-	.attr('name', "playerName" + num)
 	.appendTo("#player_input_container");
 }
 function removePlayerInput(){

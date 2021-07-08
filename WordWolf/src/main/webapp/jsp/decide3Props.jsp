@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>ルール設定</h1>
-<form method="POST" action="">
+<form method="POST" action="/WordWolf/Decide3PropsServlet">
 ウルフの人数
 <p class="spinner_area">
     <input type="number" value="a" class="counter1" data-max="a -1" data-min="1" name="numOfWolves">
@@ -36,13 +36,8 @@
 </p>
 お題の種類：
 <select name="themeType">
-	<option value="">5つの選択肢を表示</option>
-	<option value="選択肢2">選択肢2</option>
-	<option value="選択肢3">選択肢3</option>
-	<option value="選択肢4">選択肢4</option>
-	<option value="選択肢5">選択肢5</option>
-	<option value="選択肢6">選択肢6</option>
-	<option value="選択肢7">選択肢7</option>
+	<option selected disabled>お題の種類を選択</option>
+	<option></option>
 </select>
 <br><br>
 <input type="submit" value="ルール決定">

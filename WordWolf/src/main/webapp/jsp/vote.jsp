@@ -9,10 +9,7 @@
 <body>
 <h1>投票</h1>
 <p>さんの投票は、</p>
-
-<br>
-<br>
-<a href="./vote.jsp">次のプレイヤーへ</a>
+<p><input type="radio" name="wolfName[]"></p>
 <a href="./result.jsp">結果</a>
 </body>
 </html>

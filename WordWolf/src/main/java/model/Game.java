@@ -36,8 +36,7 @@ public class Game {
 	}
 	
 	public void setThemes(String themeType) {
-		ThemeDAO themeDAO = new ThemeDAO();
-		String[] themes = themeDAO.find(themeType);
-		this.themes = new Themes(themes[0], themes[1]);
+		List<String> themes = ThemeDAO.find(themeType);
+		this.themes = new Themes(themes.get(0), themes.get(1));
 	}
 }
