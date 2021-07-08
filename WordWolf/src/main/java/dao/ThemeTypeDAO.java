@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ThemeTypeDAO {
 
-    private static final String URL = "jdbc:mysql://localhost/docotsubu?useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
         
