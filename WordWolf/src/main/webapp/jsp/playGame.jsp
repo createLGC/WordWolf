@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>カウントダウン</h1>
-<p class="until">終了まで</p>
+<p class="until">トーク時間</p>
 <p class="timer">あと
 <span id="hour"></span>時間
 <span id="min"></span>分
@@ -62,8 +62,7 @@ function updateButton() {
 }
 </script>
 =======
-<!DOCTYPE html>
-<html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
