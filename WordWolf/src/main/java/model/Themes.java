@@ -6,8 +6,16 @@ public class Themes {
 	
 	public Themes(String personTheme, String wolfTheme) {
 		this.personTheme = personTheme;
-		this.wolfTheme = wolfTheme;;
+		this.wolfTheme = wolfTheme;
 	}
-	public String getTheme(String person, String wolf) { return personTheme; }
+	public String getTheme(String role) {
+		if(role.equals("person")) {
+			 return personTheme; 
+		} else if(role.equals("wolf")){
+			 return wolfTheme; 
+		}
+		
+		return null;
+	}
 
 }
