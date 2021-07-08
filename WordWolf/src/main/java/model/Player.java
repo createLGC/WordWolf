@@ -4,7 +4,7 @@ package model;
 
 public class Player {
 	private String name; // プレイヤー名
-	private String role; // "person" または "wolf"
+	private String role = "person"; // "person" または "wolf"
 	private String theme; // お題
 	
 	public Player(String name) {
