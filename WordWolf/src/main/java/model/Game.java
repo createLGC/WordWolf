@@ -11,7 +11,7 @@ public class Game {
 	private int talkTime;
 	private Themes themes;
 	
-	Game(){}
+	public Game(){}
 	
 	public Game(String[] players) {
 		System.out.println(players.length);
@@ -35,6 +35,10 @@ public class Game {
 		for(Player wolf: wolves) {
 			wolf.setRole("wolf");
 		}
+	}
+	
+	public int getTalkTime() {
+		return this.talkTime;
 	}
 	
 	public void setTalkTime(String time) {

@@ -38,8 +38,6 @@ Game game = (Game) session.getAttribute("game");
 		<option value="15:00"></option>
 		<option value="20:00"></option>
 		<option value="30:00"></option>
-		<option value="60:00"></option>
-		<option value="90:00"></option>
 	</datalist>
 </p>
 お題の種類：
