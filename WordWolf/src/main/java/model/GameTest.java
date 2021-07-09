@@ -8,7 +8,6 @@ class GameTest {
 
 	@Test
 	void testGame() {
-		Game game = new Game();
 	}
 
 	@Test

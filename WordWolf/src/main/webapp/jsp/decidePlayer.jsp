@@ -19,7 +19,7 @@
 	<input type="submit" value="決定">
 </form>
 <template id="player_input">
-	<p >プレイヤー名:<input type="text" name="playerName[]"></p>
+	<p >プレイヤー名:<input type="text" name="playerName"></p>
 </template>
 <script>
 $(window).on('load', ()=>{

@@ -14,6 +14,7 @@ public class Game {
 	Game(){}
 	
 	public Game(String[] players) {
+		System.out.println(players.length);
 		this.players = new ArrayList<Player>(players.length);
 		for(int i = 0; i < players.length; i++) {
 			this.players.set(i, new Player(players[i]));
