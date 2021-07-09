@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ThemeTypeDAO {
 	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false&allowPublicKeyRetrieval=true";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     
