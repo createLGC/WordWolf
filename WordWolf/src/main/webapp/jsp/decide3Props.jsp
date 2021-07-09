@@ -34,7 +34,7 @@ Game game = (Game) session.getAttribute("game");
 		<option value="03:00"></option>
 		<option value="04:00"></option>
 		<option value="05:00"></option>
-		<option value="10:00"></option>
+		<option value="10:00" selected></option>
 		<option value="15:00"></option>
 		<option value="20:00"></option>
 		<option value="30:00"></option>
@@ -52,6 +52,13 @@ Game game = (Game) session.getAttribute("game");
 <br><br>
 <input type="submit" value="ルール決定">
 </form>
+<script>
+$("input[type=submit]".on('click', e=>{
+	e.preventDefault();
+	if(!$("select[name=themeType]").val()) return;
+	document.forms[0].submit();
+});
+</script>
 <script src="../js/InputNumber.js"></script>
 </body>
 </html>
