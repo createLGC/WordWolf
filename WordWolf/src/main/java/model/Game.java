@@ -20,6 +20,9 @@ public class Game {
 		}
 	}
 	
+	public List<Player> getPlayers(){
+		return this.players;
+	}
 	/**
 	 * 
 	 * @param numOfWolves

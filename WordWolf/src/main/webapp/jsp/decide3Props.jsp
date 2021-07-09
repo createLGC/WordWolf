@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.Game" %>
+<%@ page import="java.util.List" %>
+<% 
+// リクエストスコープからインスタンスを取得
+List<String> themeTypeList = (List<String>) request.getAttribute("themeTypeList");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +43,9 @@
 お題の種類：
 <select name="themeType">
 	<option selected disabled>お題の種類を選択</option>
-	<option></option>
+	<% for(String themeType : themeTypeList) { %>
+		<option><%= themeType %></option>
+	<% } %>
 </select>
 <br><br>
 <input type="submit" value="ルール決定">
