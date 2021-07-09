@@ -28,7 +28,7 @@ public class ThemeDAO {
         	"SELECT theme.theme FROM theme " + 
         	"JOIN theme_type " + 
         	"ON theme.theme_type_id = theme_type.id" + 
-        	"HAVING theme_type.name = ?" + 
+        	"WHERE theme_type.name = ?" + 
         	"ORDER BY RAND() LIMIT 2";
         
         List<String> themeList = new ArrayList<>();
