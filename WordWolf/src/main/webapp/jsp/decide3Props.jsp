@@ -51,7 +51,7 @@ Game game = (Game) session.getAttribute("game");
 <input type="submit" value="ルール決定">
 </form>
 <script>
-$("input[type=submit]".on('click', e=>{
+$("input[type=submit]").on('click', e=>{
 	e.preventDefault();
 	if(!$("select[name=themeType]").val()) return;
 	document.forms[0].submit();
