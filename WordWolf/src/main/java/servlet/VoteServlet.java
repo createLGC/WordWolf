@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +20,13 @@ public class VoteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//vote.jspからwolfNamesを受け取る
+		String wolfNames = request.getParameter("wolfNames");
+		//受け取ったwolfNamesをセッションスコープのgame.decideWinnerに渡し、結果をリクエストスコープに保存。
+		request.setAttribute("winner", request.getSession().getAttribute("game").decideWinner(wolfNames));
+		//result.jspにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
