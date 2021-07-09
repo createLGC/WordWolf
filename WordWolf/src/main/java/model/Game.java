@@ -14,7 +14,6 @@ public class Game {
 	public Game(){}
 	
 	public Game(String[] players) {
-		System.out.println(players.length);
 		this.players = new ArrayList<Player>(players.length);
 		for(int i = 0; i < players.length; i++) {
 			this.players.add(i, new Player(players[i]));
@@ -51,5 +50,8 @@ public class Game {
 	public void setThemes(String themeType) {
 		List<String> themes = ThemeDAO.find(themeType);
 		this.themes = new Themes(themes.get(0), themes.get(1));
+		for(Player player: this.players) {
+			player.setTheme(this.themes.getTheme(player.getRole()));
+		}
 	}
 }

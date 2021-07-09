@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="model.Game" %>
 <% 
-Game game = (Game) session.getAttribute("game"); 
-//Game game = new Game();
-//game.setTalkTime("01:00");
+Game game = (Game) session.getAttribute("game");
 %>
 <!DOCTYPE html>
 <html>
@@ -26,7 +24,7 @@ Game game = (Game) session.getAttribute("game");
 <input type="button" value="ストップ" id="startOrStop">
 <p id="isCounting">カウントダウン起動中</p>
 <br><br>
-<a href="vote.jsp">終了</a>
+<a href="/WordWolf/jsp/vote.jsp">終了</a>
 <script>
 let isCounting = true;
 const min = document.getElementById("min");
