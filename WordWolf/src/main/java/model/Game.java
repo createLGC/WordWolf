@@ -17,7 +17,7 @@ public class Game {
 		System.out.println(players.length);
 		this.players = new ArrayList<Player>(players.length);
 		for(int i = 0; i < players.length; i++) {
-			this.players.set(i, new Player(players[i]));
+			this.players.add(i, new Player(players[i]));
 		}
 	}
 	
