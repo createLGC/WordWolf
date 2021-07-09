@@ -5,6 +5,8 @@
 <% 
 // リクエストスコープからインスタンスを取得
 List<String> themeTypeList = (List<String>) request.getAttribute("themeTypeList");
+// セッションスコープからインスタンスを取得
+Game game = (Game) session.getAttribute("game");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,7 +21,7 @@ List<String> themeTypeList = (List<String>) request.getAttribute("themeTypeList"
 <form method="POST" action="/WordWolf/Decide3PropsServlet">
 ウルフの人数
 <p class="spinner_area">
-    <input type="number" value="a" class="counter1" data-max="a -1" data-min="1" name="numOfWolves">
+    <input type="number" value="1" class="counter1" data-max="<%= game.getPlayers().size() / 2 %>" data-min="1" name="numOfWolves">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </p>
