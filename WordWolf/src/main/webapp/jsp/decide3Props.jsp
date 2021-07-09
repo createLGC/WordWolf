@@ -27,7 +27,7 @@ Game game = (Game) session.getAttribute("game");
 </p>
 
 <p class="playtime">
-トーク時間：<input type="time" name="talkTime" list="data1">
+トーク時間：<input type="time" name="talkTime" list="data1" value="10:00">
 	<datalist id="data1">
 		<option value="01:00"></option>
 		<option value="02:00"></option>
