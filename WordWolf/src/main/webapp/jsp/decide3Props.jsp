@@ -38,8 +38,6 @@ Game game = (Game) session.getAttribute("game");
 		<option value="15:00"></option>
 		<option value="20:00"></option>
 		<option value="30:00"></option>
-		<option value="60:00"></option>
-		<option value="90:00"></option>
 	</datalist>
 </p>
 お題の種類：
@@ -53,7 +51,7 @@ Game game = (Game) session.getAttribute("game");
 <input type="submit" value="ルール決定">
 </form>
 <script>
-$("input[type=submit]".on('click', e=>{
+$("input[type=submit]").on('click', e=>{
 	e.preventDefault();
 	if(!$("select[name=themeType]").val()) return;
 	document.forms[0].submit();

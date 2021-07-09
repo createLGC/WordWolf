@@ -3,11 +3,13 @@
 <%@ page import="model.Game,model.Player" %>
 <%
 // セッションスコープからインスタンスを取得
-Game game = (Game) session.getAttribute("game");
+//Game game = (Game) session.getAttribute("game");
+Game game = new Game(new String[]{"a", "b", "c"});
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" type="text/css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
@@ -15,7 +17,6 @@ Game game = (Game) session.getAttribute("game");
 </head>
 <body>
 <h1>お題</h1>
-<a>次のプレイヤーへ</a>
 <div>
 	<ul class="slider">
 		<% for(Player player : game.getPlayers()) { %>
@@ -23,14 +24,14 @@ Game game = (Game) session.getAttribute("game");
 	    <% } %>
 	</ul>
 </div>
-<a href="./playGame.jsp">ゲームスタート</a>
+<a href="/WordWolf/jsp/playGame.jsp">ゲームスタート</a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.1.0/jquery-migrate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		autoplay: true,
-		dots: true,
+		prevArrow: "<button><i class=\"fa-solid fa-arrow-left\"></i></button>",
+		nextArrow: "<button><i class=\"fa-solid fa-arrow-right\"></i></button>"
 	});
 </script>
 </body>

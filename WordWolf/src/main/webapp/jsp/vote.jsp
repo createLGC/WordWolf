@@ -15,7 +15,7 @@ Game game = (Game) session.getAttribute("game");
 </head>
 <body>
 <h1>投票</h1>
-<form>
+<form action="/WordWolf/VoteServlet" method="post">
     <ul class="slider">
     <% for(Player player: game.getPlayers()) { %>
 		<li>
@@ -23,18 +23,18 @@ Game game = (Game) session.getAttribute("game");
 		<% for(Player player2: game.getPlayers()) { %>
 			<input type="radio" name="wolfName"><%= player2.getName() %>さん
 		<% } %>
-		<input type="submit">
 		</li>
 	<% } %>
 	</ul>
+	<input type="submit" value="送信">
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.1.0/jquery-migrate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		autoplay: true,
-		dots: true,
+		prevArrow: "<i class=\"fa-solid fa-arrow-left slick-prev\"></i>",
+		nextArrow: "<i class=\"fa-solid fa-arrow-right slick-next\"></i>"
 	});
 </script>
 </body>
