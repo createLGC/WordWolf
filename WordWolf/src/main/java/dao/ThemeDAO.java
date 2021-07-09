@@ -23,7 +23,6 @@ public class ThemeDAO {
     }
         
     public static List<String> find(String themeType) {
-        
         String sql = 
         	"SELECT theme.theme FROM theme " + 
         	"JOIN theme_type " + 
