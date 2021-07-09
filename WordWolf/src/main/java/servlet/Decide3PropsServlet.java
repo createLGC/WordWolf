@@ -24,7 +24,7 @@ public class Decide3PropsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//numOfWolves, talkTime, themeTypeをgetParameterで取得。
-		
+		request.setCharacterEncoding("UTF-8");
 		String numOfWolves = request.getParameter("numOfWolves");
 		String talkTime = request.getParameter("talkTime");
 		String themeType = request.getParameter("themeType");

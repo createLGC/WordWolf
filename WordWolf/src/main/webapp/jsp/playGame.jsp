@@ -43,8 +43,8 @@ function countdown(){
 	document.getElementById("min").textContent=String(min).padStart(2,"0")
 	document.getElementById("sec").textContent=String(sec).padStart(2,"0")
 	setTimeout(countdown,1000);//1秒毎に繰り返す
-	}
-	countdown();
+}
+countdown();
 </script>
 <script>
 const button = document.querySelector('input');
@@ -62,14 +62,5 @@ function updateButton() {
   }
 }
 </script>
-=======
-
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
->>>>>>> branch 'master' of https://github.com/Kota-T/WordWolf.git
 </body>
 </html>

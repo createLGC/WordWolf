@@ -38,7 +38,10 @@ public class Game {
 	}
 	
 	public void setTalkTime(String time) {
-		
+		String[] times = time.split(":");
+		int minute = Integer.parseInt(times[0]);
+		int second = Integer.parseInt(times[1]);
+		this.talkTime = minute * 60 + second;
 	}
 	
 	public void setThemes(String themeType) {
