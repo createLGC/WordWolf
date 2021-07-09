@@ -9,10 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThemeTypeDAO {
-
+	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
+    
+    static {
+    	try {
+    		Class.forName(DRIVER_PATH);
+    	}catch(ClassNotFoundException e) {
+    		e.printStackTrace();
+    	}
+    }
         
     public static List<String> findAll() {
         
@@ -20,8 +28,8 @@ public class ThemeTypeDAO {
         
         List<String> themeTypeList = new ArrayList<>();
         
-        try (	Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-              PreparedStatement statement = connection.prepareStatement(sql); ) {
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql);) {
                         
             ResultSet result = statement.executeQuery();
             
