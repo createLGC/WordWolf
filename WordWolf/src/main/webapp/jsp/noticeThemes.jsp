@@ -3,11 +3,13 @@
 <%@ page import="model.Game,model.Player" %>
 <%
 // セッションスコープからインスタンスを取得
-Game game = (Game) session.getAttribute("game");
+//Game game = (Game) session.getAttribute("game");
+Game game = new Game(new String[]{"a", "b", "c"});
 %>
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" type="text/css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
@@ -28,8 +30,8 @@ Game game = (Game) session.getAttribute("game");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		autoplay: true,
-		dots: true,
+		prevArrow: "<button><i class=\"fa-solid fa-arrow-left\"></i></button>",
+		nextArrow: "<button><i class=\"fa-solid fa-arrow-right\"></i></button>"
 	});
 </script>
 </body>

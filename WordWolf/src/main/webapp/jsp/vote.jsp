@@ -4,7 +4,6 @@
 <%
 // セッションスコープからインスタンスを取得
 Game game = (Game) session.getAttribute("game");
-//Game game = new Game(new String[]{"a", "b", "c"});
 %>
 <!DOCTYPE html>
 <html>
@@ -34,8 +33,8 @@ Game game = (Game) session.getAttribute("game");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		autoplay: true,
-		dots: true,
+		prevArrow: "<i class=\"fa-solid fa-arrow-left slick-prev\"></i>",
+		nextArrow: "<i class=\"fa-solid fa-arrow-right slick-next\"></i>"
 	});
 </script>
 </body>
