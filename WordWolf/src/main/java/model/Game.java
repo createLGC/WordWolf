@@ -11,6 +11,8 @@ public class Game {
 	private int talkTime;
 	private Themes themes;
 	
+	Game(){}
+	
 	public Game(String[] players) {
 		this.players = new ArrayList<Player>(players.length);
 		for(int i = 0; i < players.length; i++) {

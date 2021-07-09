@@ -29,8 +29,8 @@ $(window).on('load', ()=>{
 });
 $("input[type=submit]").on('click', e=>{
 	e.preventDefault();
-	const texts = document.querySelector("input[type=text]");
-	for(int i = 0;i < texts.length; i++){
+	const texts = document.querySelectorAll("input[type=text]");
+	for(let i = 0;i < texts.length; i++){
 		if(!texts[i].value) return;
 	}
 	document.forms[0].submit();
