@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@page import="model.Game" %>
 <% 
-//Game game = (Game) session.getAttribute("game"); 
-Game game = new Game();
-game.setTalkTime("01:00");
+Game game = (Game) session.getAttribute("game"); 
+//Game game = new Game();
+//game.setTalkTime("01:00");
 %>
 <!DOCTYPE html>
 <html>

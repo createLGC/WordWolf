@@ -3,7 +3,8 @@
 <%@ page import="model.Game,model.Player" %>
 <%
 // セッションスコープからインスタンスを取得
-Game game = (Game) session.getAttribute("game");
+//Game game = (Game) session.getAttribute("game");
+Game game = new Game(new String[]{"a", "b", "c"});
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,6 @@ Game game = (Game) session.getAttribute("game");
 </head>
 <body>
 <h1>お題</h1>
-<a>次のプレイヤーへ</a>
 <div>
 	<ul class="slider">
 		<% for(Player player : game.getPlayers()) { %>
