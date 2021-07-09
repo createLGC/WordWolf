@@ -9,11 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThemeTypeDAO {
-
+	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
-        
+    
+    static {
+    	try{
+    		Class.forName(DRIVER_PATH);
+    	}catch(ClassNotFoundException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     public static List<String> findAll() {
         
         String sql = "SELECT * FROM theme_type;";
