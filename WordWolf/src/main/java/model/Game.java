@@ -6,19 +6,24 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import dao.ThemeDAO;
-
 public class Game {
 	private List<Player> players;
 	private int talkTime;
 	private Themes themes;
 	
-	public Game(){}
+	/**
+	 * テスト用コンストラクタ
+	 */
+	Game(){}
 	
-	public Game(String[] players) {
-		this.players = new ArrayList<Player>(players.length);
-		for(int i = 0; i < players.length; i++) {
-			this.players.add(i, new Player(players[i]));
+	/**
+	 * player
+	 * @param players
+	 */
+	public Game(String[] playerNames) {
+		this.players = new ArrayList<Player>(playerNames.length);
+		for(int i = 0; i < playerNames.length; i++) {
+			this.players.add(i, new Player(playerNames[i]));
 		}
 	}
 	
@@ -26,15 +31,19 @@ public class Game {
 		return this.players;
 	}
 	/**
-	 * 
+	 * players
 	 * @param numOfWolves
 	 */
 	public void setWolves(int numOfWolves) {
+		//this.playersを複製
 		List<Player> clonePlayers = new ArrayList<Player>(this.players);
+		//複製したリストをシャッフル
 		Collections.shuffle(clonePlayers);
-		List<Player> wolves = clonePlayers.subList(0, numOfWolves);
-		for(Player wolf: wolves) {
-			wolf.setRole("wolf");
+		//シャッフルしたリストの前からnumOfWolves分を切り出す。
+		List<Player> players = clonePlayers.subList(0, numOfWolves);
+		//切り出したリストの要素playerに"wolf"をセット
+		for(Player player: players) {
+			player.setRole("wolf");
 		}
 	}
 	
@@ -49,8 +58,7 @@ public class Game {
 		this.talkTime = minute * 60 + second;
 	}
 	
-	public void setThemes(String themeType) {
-		List<String> themes = ThemeDAO.find(themeType);
+	public void setThemes(List<String> themes) {
 		this.themes = new Themes(themes.get(0), themes.get(1));
 		for(Player player: this.players) {
 			player.setTheme(this.themes.getTheme(player.getRole()));

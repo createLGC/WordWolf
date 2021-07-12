@@ -21,7 +21,7 @@ class ThemeTypeDAOTest {
 		List<String> themeTypeList = new ArrayList<>();
 		
 		try (
-			FileInputStream fi = new FileInputStream("../../sql/theme_type.csv");
+			FileInputStream fi = new FileInputStream("src/main/sql/theme_type.csv");
 			InputStreamReader is = new InputStreamReader(fi);
 			BufferedReader br = new BufferedReader(is);
 		){

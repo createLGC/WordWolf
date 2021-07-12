@@ -36,8 +36,8 @@ List<Player> players = game.getPlayers();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		prevArrow: "<p><i class=\"fa-solid fa-arrow-left slick-prev\"></i></p>",
-		nextArrow: "<p><i class=\"fa-solid fa-arrow-right slick-next\"></i></p>"
+		prevArrow: "<i class='fa-solid fa-arrow-left slick-prev'></i>",
+		nextArrow: "<i class='fa-solid fa-arrow-right slick-next'></i>"
 	});
 </script>
 </body>
