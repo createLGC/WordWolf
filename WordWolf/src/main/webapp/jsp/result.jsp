@@ -21,6 +21,6 @@ session.removeAttribute("game");
 <% } %>
 <br>
 <br>
-<a href="./jsp/decidePlayer.jsp">終了</a>
+<a href="${pageContext.request.ContextPath}/index.jsp">終了</a>
 </body>
 </html>
