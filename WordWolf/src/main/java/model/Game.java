@@ -69,10 +69,15 @@ public class Game {
 		List<Integer> list2  = list.size(list1);
 		
 		//wolfNamesをループし、その中でStringのリストをループし、それぞれの要素を比較して、一致するときにStringのリストの要素の番号のIntegerのリストの要素の値を1増やす。
-		
+		for(String wolfName: wolfNames) {
+			for(String list1) {
+			if(list1.contains(wolfName)) {
 		//Integerのリストの要素の中で一番大きいものの番号のStringのリストの要素をreturn
+				return 
 	}
 }
 }
-
+	}
+}
+}
 

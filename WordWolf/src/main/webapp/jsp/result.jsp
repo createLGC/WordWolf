@@ -11,6 +11,6 @@
 <p>投票結果は・・・</p>
 <br>
 <br>
-<a href="./decidePlayer.jsp">終了</a>
+<a href="./decidePlayer.jsp"><input type="submit" value="終了"></a>
 </body>
 </html>
