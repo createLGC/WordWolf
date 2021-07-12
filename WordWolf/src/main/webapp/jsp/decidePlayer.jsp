@@ -32,6 +32,7 @@
 ※自分が人狼だと思ったらそれを悟られないようにしましょう。<br><br>
 ③時間切れになったら投票タイムです。それぞれがウルフだと思う人に投票します。<br><br>
 ④最多票が村人だった場合はウルフの勝利です。</span></span></p>
+<img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 <script>
 $(window).on('load', ()=>{
 	for(let i = 0; i < $('.counter1').first().val(); i++){
