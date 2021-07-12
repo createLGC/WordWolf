@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.Game,model.Player" %>
+<%@ page import="model.Game,model.Player,java.util.List" %>
 <%
 // セッションスコープからインスタンスを取得
 Game game = (Game) session.getAttribute("game");
+List<Player> players = game.getPlayers();
 %>
 <!DOCTYPE html>
 <html>
@@ -17,11 +18,13 @@ Game game = (Game) session.getAttribute("game");
 <h1>投票</h1>
 <form action="/WordWolf/VoteServlet" method="post">
     <ul class="slider">
-    <% for(Player player: game.getPlayers()) { %>
+    <% for(int i = 0;i < players.size(); i++) { %>
 		<li>
-		<%= player.getName() %>さんの投票は、<br>
-		<% for(Player player2: game.getPlayers()) { %>
-			<input type="radio" name="wolfName"><%= player2.getName() %>さん
+		<%= players.get(i).getName() %>さんの投票は、<br>
+		<% for(Player player2: players) { %>
+			<% if(!players.get(i).getName().equals(player2.getName())) {%>
+			<input type="radio" name="<%= "wolfName" + i %>" value="<%= player2.getName() %>"><%= player2.getName() %>さん
+			<% } %>
 		<% } %>
 		</li>
 	<% } %>
@@ -33,8 +36,8 @@ Game game = (Game) session.getAttribute("game");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		prevArrow: "<i class=\"fa-solid fa-arrow-left slick-prev\"></i>",
-		nextArrow: "<i class=\"fa-solid fa-arrow-right slick-next\"></i>"
+		prevArrow: "<p><i class=\"fa-solid fa-arrow-left slick-prev\"></i></p>",
+		nextArrow: "<p><i class=\"fa-solid fa-arrow-right slick-next\"></i></p>"
 	});
 </script>
 </body>

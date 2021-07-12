@@ -9,9 +9,6 @@ Game game = (Game) session.getAttribute("game");
 <head>
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
-<style>
-
-</style>
 </head>
 <body>
 <h1>カウントダウン</h1>
@@ -24,13 +21,7 @@ Game game = (Game) session.getAttribute("game");
 <input type="button" value="ストップ" id="startOrStop">
 <p id="isCounting">カウントダウン起動中</p>
 <br><br>
-<<<<<<< HEAD
-
-<input type="submit" value="トーク終了">
-</form>
-=======
 <a href="/WordWolf/jsp/vote.jsp">終了</a>
->>>>>>> branch 'master' of https://github.com/Kota-T/WordWolf.git
 <script>
 let isCounting = true;
 const min = document.getElementById("min");

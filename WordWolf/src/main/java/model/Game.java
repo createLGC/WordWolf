@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import dao.ThemeDAO;
@@ -55,30 +57,35 @@ public class Game {
 		}
 	}
 	
-	public String decideWinner(String[] wolfNames) {
-		//まず、Stringのリストを作成
-		List<String> list1= new ArrayList<>();
-		//wolfNamesをループして要素が上のリストになければ上のリストに入れ、あれば何もしない
-		for(String wolfName: wolfNames) {
-			if(list1.contains(wolfName)) {
-				continue;
-			}else {
-				list1.add(wolfName);
+	public String decideWinner(List<String> wolfNames) {
+		List<String> playerNames = new ArrayList<>(new HashSet<>(wolfNames));
+		List<Player> players = new ArrayList<>();
+		for(String playerName: playerNames) {
+			inner: for(Player player: this.players) {
+				if(player.getName().equals(playerName)) {
+					players.add(player);
+					continue inner;
+				}
+			}
 		}
-		//Stringのリストと同じ長さのIntegerのリストを作成し、要素を0で初期化
-		List<Integer> list2  = list.size(list1);
-		list2.fill(0);
 		
-		//wolfNamesをループし、その中でStringのリストをループし、それぞれの要素を比較して、一致するときにStringのリストの要素の番号のIntegerのリストの要素の値を1増やす。
-		for(String wolfName: wolfNames) {
-			for(String list1) {
-			if(list1.contains(wolfName)) {
-		//Integerのリストの要素の中で一番大きいものの番号のStringのリストの要素をreturn
-				return 
+		List<String> roles = new ArrayList<>();
+		for(Player player: players) {
+			roles.add(player.getRole());
+		}
+		HashMap<String, Integer> roleMap = new HashMap<>();
+		roleMap.put("person", 0);
+		roleMap.put("wolf", 0);
+		for(String role: roles) {
+			roleMap.put(role, roleMap.get(role) + 1);
+		}
+		if(roleMap.get("person") > roleMap.get("wolf"))
+			return "person";
+		else if(roleMap.get("person") < roleMap.get("wolf"))
+			return "wolf";
+		else
+			return null;
+
 	}
-}
-}
-	}
-}
 }
 
