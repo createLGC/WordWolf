@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,6 @@ class GameTest {
 
 	@Test
 	void testGame() {
-	}
-	
-	void testGetPlayers() {
 	}
 
 	@Test
@@ -59,7 +57,7 @@ class GameTest {
 		Game game = new Game(this.playerNames);
 		game.setWolves(2);
 		game.setThemes(ThemeDAO.find("ブランド"));
-		List<Player> wolves = game.getWolves();
-		game.decideWinner();
+		List<String> wolfNames = Arrays.asList(this.playerNames);
+		assertEquals(game.decideWinner(wolfNames), "person");
 	}
 }
