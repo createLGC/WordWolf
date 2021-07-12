@@ -20,7 +20,7 @@ Game game = (Game) session.getAttribute("game");
 <form method="POST" action="/WordWolf/Decide3PropsServlet">
 ウルフの人数
 <p class="spinner_area">
-    <input type="number" value="1" class="counter1" data-max="<%= game.getPlayers().size() / 3 %>" data-min="1" name="numOfWolves">
+    <input type="number" value="1" class="counter1" data-max="<%= game.getPlayers().size() / 2 %>" data-min="1" name="numOfWolves">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </p>
@@ -55,6 +55,7 @@ $("input[type=submit]").on('click', e=>{
 	if(!$("select[name=themeType]").val()) return;
 	document.forms[0].submit();
 });
+onChangeNumber = null;
 </script>
 <script src="${pageContext.request.contextPath}/js/InputNumber.js"></script>
 </body>

@@ -53,8 +53,7 @@ $(function(){
 		}
 		
 		//プレーヤー名入力欄を増減させる
-		if(onChangeNumber)
-			onChangeNumber(target.val(), oldNum);
+		onChangeNumber?.(target.val(), oldNum);
     }
   
 });
