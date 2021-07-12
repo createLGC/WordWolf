@@ -67,6 +67,7 @@ public class Game {
 		}
 		//Stringのリストと同じ長さのIntegerのリストを作成し、要素を0で初期化
 		List<Integer> list2  = list.size(list1);
+		list2.fill(0);
 		
 		//wolfNamesをループし、その中でStringのリストをループし、それぞれの要素を比較して、一致するときにStringのリストの要素の番号のIntegerのリストの要素の値を1増やす。
 		for(String wolfName: wolfNames) {
