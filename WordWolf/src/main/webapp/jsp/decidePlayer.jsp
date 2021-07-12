@@ -12,8 +12,8 @@
 </head>
 <body>
 <h1>ワードウルフ</h1>
-<img src="../images/wordwolf-top.jpg">
-人数<div class="spinner_area">
+<img src="${pageContext.request.ContextPath}/images/wordwolf-top.jpg"><br>
+参加人数<div class="spinner_area">
     <input type="number" value="3" class="counter1" data-max="10" data-min="3">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
@@ -32,6 +32,7 @@
 ※自分が人狼だと思ったらそれを悟られないようにしましょう。<br><br>
 ③時間切れになったら投票タイムです。それぞれがウルフだと思う人に投票します。<br><br>
 ④最多票が村人だった場合はウルフの勝利です。</span></span></p>
+<img src="${pageContext.request.ContextPath}/images/wolf-icon.png">
 <script>
 $(window).on('load', ()=>{
 	for(let i = 0; i < $('.counter1').first().val(); i++){
@@ -67,6 +68,6 @@ function onChangeNumber(newNum, oldNum){
 	}	
 }
 </script>
-<script src="../js/InputNumber.js"></script>
+<script src="${pageContext.request.ContextPath}/js/InputNumber.js"></script>
 </body>
 </html>
