@@ -6,41 +6,7 @@
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
 <link rel="stylesheet" href="../css/InputNumber.css">
-<style>
-.ques {
-  background: #ddd;    /* 背景色に灰色を指定 */
-  width: 1.5em;        /* 横幅を1.5文字分にする */
-  line-height: 1.5em;  /* 文字が上下中央にくるように工夫 */
-  text-align: center;  /* 文字が左右中央にくるように工夫 */
-  border-radius: 50%;  /* 円形に変更 */
-  display: inline-block;
-  position: relative;
-}
-
-.ex {
-  position: absolute;
-  top: 0;
-  right: -5px;
-  color: #fff;
-  font-size: 14px;
-  text-align: left;
-  width: 300px;
-  background: rgba(0,0,0,5);
-  padding: 2px 5px;
-  opacity: 0;
-  transition : all .3s;
-  display: inline-block;
-  transform: translate(100%);
-}
-
-.ques:hover {
-  cursor: pointer;  
-}
-
-.ques:hover .ex {
-  opacity: 1;
-}
-</style>
+<link rel="stylesheet" href="../css/decidePlayer.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
