@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%
 String winner = (String) request.getAttribute("winner");
-session.removeAttribute("game");
 %>
 <!DOCTYPE html>
 <html>
@@ -21,6 +20,6 @@ session.removeAttribute("game");
 <% } %>
 <br>
 <br>
-<a href="${pageContext.request.ContextPath}/index.jsp">終了</a>
+<a href="/WordWolf/index.jsp">終了</a>
 </body>
 </html>
