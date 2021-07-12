@@ -12,8 +12,8 @@
 </head>
 <body>
 <h1>ワードウルフ</h1>
-<img src="images/wordwolf-top.jpg">
-人数<div class="spinner_area">
+<img src="${pageContext.request.contextPath}/images/wordwolf-top.jpg"><br>
+参加人数<div class="spinner_area">
     <input type="number" value="3" class="counter1" data-max="10" data-min="3">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
