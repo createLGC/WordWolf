@@ -13,6 +13,7 @@ Game game = (Game) session.getAttribute("game");
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/InputNumber.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>

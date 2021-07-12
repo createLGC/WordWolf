@@ -7,11 +7,11 @@
 <title>ワードウルフ</title>
 <link rel="stylesheet" href="../css/InputNumber.css">
 <link rel="stylesheet" href="../css/decidePlayer.css">
+<link rel="stylesheet" href="../css/alignCenter.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <h1>ワードウルフ</h1>
-
 人数<div class="spinner_area">
     <input type="number" value="3" class="counter1" data-max="10" data-min="3">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
