@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Game {
 	private List<Player> players;
@@ -66,27 +69,41 @@ public class Game {
 	}
 	
 	public String decideWinner(List<String> wolfNames) {
-		List<String> playerNames = new ArrayList<>(new HashSet<>(wolfNames));
-		List<Player> players = new ArrayList<>();
-		for(String playerName: playerNames) {
-			inner: for(Player player: this.players) {
-				if(player.getName().equals(playerName)) {
-					players.add(player);
-					continue inner;
-				}
-			}
-		}
+		HashSet<String> playerNamesSet = new HashSet<>(wolfNames);
+		System.out.println(playerNamesSet);
 		
-		List<String> roles = new ArrayList<>();
-		for(Player player: players) {
-			roles.add(player.getRole());
+		HashMap<String, Integer> playerNamesMap = new HashMap<>();
+		for(String playerName: playerNamesSet) {
+			playerNamesMap.put(playerName, 0);
 		}
+		System.out.println(playerNamesMap);
+		
+		for(String wolfName: wolfNames) {
+			playerNamesMap.put(wolfName, playerNamesMap.get(wolfName) + 1);
+		}
+		System.out.println(playerNamesMap);
+		
+		HashMap<Player, Integer> playersMap = new HashMap<>();
+		Iterator<Entry<String, Integer>> it = playerNamesMap.entrySet().iterator();
+	    while (it.hasNext()) {
+	        Map.Entry<String, Integer> entry = (Map.Entry<String, Integer>)it.next();
+	        for(Player player: this.players) {
+	        	if(player.getName().equals(entry.getKey())) {
+	        		playersMap.put(player, entry.getValue());
+	        	}
+	        }
+	    }
+	    System.out.println(playersMap);
+		
 		HashMap<String, Integer> roleMap = new HashMap<>();
-		roleMap.put("person", 0);
-		roleMap.put("wolf", 0);
-		for(String role: roles) {
-			roleMap.put(role, roleMap.get(role) + 1);
-		}
+		Iterator<Entry<Player, Integer>> it2 = playersMap.entrySet().iterator();
+	    while (it2.hasNext()) {
+	        Map.Entry<Player, Integer> entry = (Map.Entry<Player, Integer>)it2.next();
+	        String role = entry.getKey().getRole();
+	        roleMap.put(role, entry.getValue());
+	    }
+	    System.out.println(roleMap);
+	    
 		if(roleMap.get("person") > roleMap.get("wolf"))
 			return "person";
 		else if(roleMap.get("person") < roleMap.get("wolf"))
