@@ -68,6 +68,7 @@ public class Game {
 				}
 			}
 		}
+		
 		List<String> roles = new ArrayList<>();
 		for(Player player: players) {
 			roles.add(player.getRole());
@@ -84,7 +85,7 @@ public class Game {
 			return "wolf";
 		else
 			return null;
+
 	}
 }
-
 
