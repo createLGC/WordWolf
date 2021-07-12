@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>ワードウルフ</h1>
-<img src="images/wordwolf-top.jpg">
+<img src="../images/wordwolf-top.jpg">
 人数<div class="spinner_area">
     <input type="number" value="3" class="counter1" data-max="10" data-min="3">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
@@ -41,8 +41,11 @@ $(window).on('load', ()=>{
 $("input[type=submit]").on('click', e=>{
 	e.preventDefault();
 	const texts = document.querySelectorAll("input[type=text]");
-	for(let i = 0;i < texts.length; i++){
-		if(!texts[i].value) return;
+	for(let i = 0; i < texts.length; i++){
+		if(!texts[i].value){return;}
+		for(let j = i + 1; j < texts.length; j++){
+			if(texts[i].value === texts[j].value){return;}
+		}
 	}
 	document.forms[0].submit();
 });

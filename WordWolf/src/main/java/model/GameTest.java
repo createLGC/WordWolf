@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import dao.ThemeDAO;
 
 class GameTest {
-	private String[] playerNames = new String[]{"a", "b", "c"};
+	private String[] playerNames = new String[]{"a", "b", "c", "d", "e"};
 
 	@Test
 	void testGame() {
@@ -21,14 +21,14 @@ class GameTest {
 	@Test
 	void testSetWolves() {
 		Game game = new Game(this.playerNames);
-		game.setWolves(3);
+		game.setWolves(2);
 		List<Player> players = game.getPlayers();
 		int numOfWolves = 0;
 		for(Player player: players) {
 			if(player.getRole().equals("wolf"))
 				numOfWolves++;
 		}
-		assertEquals(numOfWolves, 3);
+		assertEquals(numOfWolves, 2);
 	}
 
 	@Test
@@ -53,5 +53,13 @@ class GameTest {
 				fail("player.role is invalid.");
 		}
 	}
-
+	
+	@Test
+	void testDecideWinner() {
+		Game game = new Game(this.playerNames);
+		game.setWolves(2);
+		game.setThemes(ThemeDAO.find("ブランド"));
+		List<Player> wolves = game.getWolves();
+		game.decideWinner();
+	}
 }

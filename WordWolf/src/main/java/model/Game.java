@@ -33,6 +33,16 @@ public class Game {
 	public List<Player> getPlayers(){
 		return this.players;
 	}
+	
+	public List<Player> getWolves(){
+		List<Player> wolves = new ArrayList<Player>();
+		for(Player player: this.players) {
+			if(player.getRole().equals("wolf"))
+				wolves.add(player);
+		}
+		return wolves;
+	}
+	
 	/**
 	 * players
 	 * @param numOfWolves
@@ -70,18 +80,15 @@ public class Game {
 	
 	public String decideWinner(List<String> wolfNames) {
 		HashSet<String> playerNamesSet = new HashSet<>(wolfNames);
-		System.out.println(playerNamesSet);
 		
 		HashMap<String, Integer> playerNamesMap = new HashMap<>();
 		for(String playerName: playerNamesSet) {
 			playerNamesMap.put(playerName, 0);
 		}
-		System.out.println(playerNamesMap);
 		
 		for(String wolfName: wolfNames) {
 			playerNamesMap.put(wolfName, playerNamesMap.get(wolfName) + 1);
 		}
-		System.out.println(playerNamesMap);
 		
 		HashMap<Player, Integer> playersMap = new HashMap<>();
 		Iterator<Entry<String, Integer>> it = playerNamesMap.entrySet().iterator();
@@ -93,7 +100,6 @@ public class Game {
 	        	}
 	        }
 	    }
-	    System.out.println(playersMap);
 		
 		HashMap<String, Integer> roleMap = new HashMap<>();
 		Iterator<Entry<Player, Integer>> it2 = playersMap.entrySet().iterator();
@@ -102,7 +108,6 @@ public class Game {
 	        String role = entry.getKey().getRole();
 	        roleMap.put(role, entry.getValue());
 	    }
-	    System.out.println(roleMap);
 	    
 		if(roleMap.get("person") > roleMap.get("wolf"))
 			return "person";
