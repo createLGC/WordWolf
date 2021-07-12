@@ -9,7 +9,7 @@ import java.util.List;
 import dao.ThemeDAO;
 
 public class Game {
-	private ArrayList<Player> players;
+	private List<Player> players;
 	private int talkTime;
 	private Themes themes;
 	

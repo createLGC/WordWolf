@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.Game" %>
-<%@ page import="java.util.List" %>
+<%@ page import="model.Game,java.util.List" %>
 <% 
 // リクエストスコープからインスタンスを取得
 List<String> themeTypeList = (List<String>) request.getAttribute("themeTypeList");
@@ -13,7 +12,7 @@ Game game = (Game) session.getAttribute("game");
 <head>
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
-<link rel="stylesheet" href="../css/InputNumber.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/InputNumber.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -57,6 +56,6 @@ $("input[type=submit]").on('click', e=>{
 	document.forms[0].submit();
 });
 </script>
-<script src="../js/InputNumber.js"></script>
+<script src="${pageContext.request.contextPath}/js/InputNumber.js"></script>
 </body>
 </html>
