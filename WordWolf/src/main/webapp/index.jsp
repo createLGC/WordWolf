@@ -74,7 +74,7 @@ function onChangeNumber(newNum, oldNum){
 	}else if(newNum < oldNum){
 		removePlayerInput();
 	}	
-}
+}     
 </script>
 <script src="./js/InputNumber.js"></script>
 </body>
