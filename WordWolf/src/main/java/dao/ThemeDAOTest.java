@@ -15,13 +15,13 @@ class ThemeDAOTest {
 
 	@Test
 	void testFind() {
-		List<String> list = ThemeDAO.find("ブランド");
-		String[] array = list.toArray(new String[list.size()]);
-		MatcherAssert.assertThat(this.findAllFromCSV(), hasItems(array));
+		MatcherAssert.assertThat(this.findAllFromCSV(), hasItems(ThemeDAO.find("ブランド").toArray(new String[0])));
 	}
 	
+	
+	
 	private List<String> findAllFromCSV() {
-		List<String> themeList = new ArrayList<>();
+		List<String> themeTypeList = new ArrayList<>();
 		
 		try (
 			FileInputStream fi = new FileInputStream("src/main/sql/theme.csv");
@@ -44,13 +44,13 @@ class ThemeDAOTest {
 					arr = line.split(",");
 				} else {
 					String[] data = line.split(",");
-					themeList.add(data[2]);
+					themeTypeList.add(data[1]);
 				}
 				//行数のインクリメント
 				i++;	
 			}
 			
-			return themeList;
+			return themeTypeList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
