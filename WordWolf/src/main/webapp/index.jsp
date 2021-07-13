@@ -11,6 +11,7 @@ session.removeAttribute("game");
 <link rel="stylesheet" href="./css/InputNumber.css">
 <link rel="stylesheet" href="./css/decidePlayer.css">
 <link rel="stylesheet" href="./css/alignCenter.css">
+<link rel="stylesheet" href="./css/button.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -23,7 +24,7 @@ session.removeAttribute("game");
 </div>
 <form action="/WordWolf/DecidePlayerServlet" method="post">
 	<div id="player_input_container"></div>
-	<input type="submit" value="決定">
+	<input type="submit" value="決定" class="button">
 </form>
 <template id="player_input">
 	<p >プレイヤー名:<input type="text" name="playerName"></p>
