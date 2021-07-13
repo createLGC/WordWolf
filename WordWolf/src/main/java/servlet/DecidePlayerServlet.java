@@ -15,7 +15,11 @@ import dao.ThemeTypeDAO;
 import model.Game;
 
 /**
- * Servlet implementation class DecidePlayerServlet
+ * @see model.Game
+ * inde.jspからゲームに参加するプレイヤー名を取得。
+ * Gameインスタンスを作成し、セッションスコープに保存。
+ * お題の種類の一覧を取得し{@link ThemeTypeDAO#findAll()}、リクエストスコープに保存。
+ * decide3Props.jspにフォワード。
  */
 @WebServlet("/DecidePlayerServlet")
 public class DecidePlayerServlet extends HttpServlet {
@@ -25,18 +29,17 @@ public class DecidePlayerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String[] playerNames = request.getParameterValues("playerName");
 		
 		Game game = new Game(playerNames);
 		
-		//セッションスコープに登録ユーザーを保存
+		//セッションスコープにGameインスタンスのgameを保存
 		HttpSession session = request.getSession();
-		session.setAttribute("game",game);
+		session.setAttribute("game", game);
 		
+		//お題の種類の一覧を取得しリクエストスコープに保存
 		List<String> themeTypeList = ThemeTypeDAO.findAll();
-		
 		request.setAttribute("themeTypeList", themeTypeList);
 		
 		RequestDispatcher dispatcher = 

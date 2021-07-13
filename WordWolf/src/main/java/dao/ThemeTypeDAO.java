@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * theme_typeテーブルを操作するクラス
+ * @author 6C106
+ *
+ */
 public class ThemeTypeDAO {
 	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false&allowPublicKeyRetrieval=true";
@@ -23,6 +27,10 @@ public class ThemeTypeDAO {
     	}
     }
     
+    /**
+     * theme_typeテーブルの一覧を取得
+     * @return
+     */
     public static List<String> findAll() {
         
         String sql = "SELECT * FROM theme_type;";

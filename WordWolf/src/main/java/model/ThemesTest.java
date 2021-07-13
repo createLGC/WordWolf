@@ -8,7 +8,9 @@ class ThemesTest {
 
 	@Test
 	void testThemes() {
-		fail("まだ実装されていません");
+		Themes themes = new Themes("a", "b");
+		assertEquals(themes.getTheme("person"), "a");
+		assertEquals(themes.getTheme("wolf"), "b");
 	}
 
 	@Test
@@ -16,11 +18,4 @@ class ThemesTest {
 		Themes themes = new Themes("a", "b");
 		assertEquals(themes.getTheme("person"), "a");
 	}
-
-	@Test
-	void testGetRole() {
-	   Themes themes = new Themes("a","b");
-	   assertEquals(themes.getRole("a"),"person");
-	}
-
 }
