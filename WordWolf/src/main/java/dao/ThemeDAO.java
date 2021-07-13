@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * themeテーブルにアクセスするクラス
+ * @author 6C106
+ *
+ */
 public class ThemeDAO {
 	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false";
@@ -21,7 +26,12 @@ public class ThemeDAO {
     		e.printStackTrace();
     	}
     }
-        
+    
+    /**
+     * themeテーブルにアクセスし、themeTypeのものをランダムに二つとってくる。
+     * @param themeType
+     * @return
+     */
     public static List<String> find(String themeType) {
         String sql = "SELECT theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id WHERE theme_type.name = ? ORDER BY RAND() LIMIT 2";
         
