@@ -33,6 +33,16 @@ public class Game {
 	public List<Player> getPlayers(){
 		return this.players;
 	}
+	
+	public List<Player> getWolves(){
+		List<Player> wolves = new ArrayList<Player>();
+		for(Player player: this.players) {
+			if(player.getRole().equals("wolf"))
+				wolves.add(player);
+		}
+		return wolves;
+	}
+	
 	/**
 	 * players
 	 * @param numOfWolves
@@ -96,11 +106,13 @@ public class Game {
 	    System.out.println(playersMap);
 		
 		HashMap<String, Integer> roleMap = new HashMap<>();
+		roleMap.put("person", 0);
+		roleMap.put("wolf", 0);
 		Iterator<Entry<Player, Integer>> it2 = playersMap.entrySet().iterator();
 	    while (it2.hasNext()) {
 	        Map.Entry<Player, Integer> entry = (Map.Entry<Player, Integer>)it2.next();
 	        String role = entry.getKey().getRole();
-	        roleMap.put(role, entry.getValue());
+	        roleMap.put(role, roleMap.get(role) + entry.getValue());
 	    }
 	    System.out.println(roleMap);
 	    
@@ -108,6 +120,7 @@ public class Game {
 			return "person";
 		else if(roleMap.get("person") < roleMap.get("wolf"))
 			return "wolf";
-		else return null;
+		else
+			return null;
 	}
 }

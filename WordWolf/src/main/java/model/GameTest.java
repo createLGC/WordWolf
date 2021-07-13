@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -9,26 +10,23 @@ import org.junit.jupiter.api.Test;
 import dao.ThemeDAO;
 
 class GameTest {
-	private String[] playerNames = new String[]{"a", "b", "c"};
+	private String[] playerNames = new String[]{"a", "b", "c", "d", "e"};
 
 	@Test
 	void testGame() {
-	}
-	
-	void testGetPlayers() {
 	}
 
 	@Test
 	void testSetWolves() {
 		Game game = new Game(this.playerNames);
-		game.setWolves(3);
+		game.setWolves(2);
 		List<Player> players = game.getPlayers();
 		int numOfWolves = 0;
 		for(Player player: players) {
 			if(player.getRole().equals("wolf"))
 				numOfWolves++;
 		}
-		assertEquals(numOfWolves, 3);
+		assertEquals(numOfWolves, 2);
 	}
 
 	@Test
@@ -53,5 +51,13 @@ class GameTest {
 				fail("player.role is invalid.");
 		}
 	}
-
+	
+	@Test
+	void testDecideWinner() {
+		Game game = new Game(this.playerNames);
+		game.setWolves(2);
+		game.setThemes(ThemeDAO.find("ブランド"));
+		List<String> wolfNames = Arrays.asList(this.playerNames);
+		assertEquals(game.decideWinner(wolfNames), "person");
+	}
 }
