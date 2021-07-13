@@ -19,8 +19,8 @@ class ThemesTest {
 
 	@Test
 	void testGetRole() {
-	   Roles roles = new Roles("a","b");
-	   asserEquals(roles.getRole("personTheme"),"a");
+	   Themes themes = new Themes("a","b");
+	   assertEquals(themes.getRole("a"),"person");
 	}
 
 }
