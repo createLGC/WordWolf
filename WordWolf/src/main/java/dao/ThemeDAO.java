@@ -28,7 +28,8 @@ public class ThemeDAO {
     }
     
     /**
-     * themeテーブルにアクセスし、themeTypeのものをランダムに二つとってくる。
+     * themeテーブルにアクセスし、
+     * お題の種類がthemeTypeのものをランダムに二つとってくる。
      * @param themeType
      * @return
      */

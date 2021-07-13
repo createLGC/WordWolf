@@ -21,5 +21,10 @@ String winner = (String) request.getAttribute("winner");
 <br>
 <br>
 <a href="/WordWolf/index.jsp">終了</a>
+<script>
+window.onload = ()=>{
+	setTimeout(()=>location.href="/WordWolf/index.jsp", 30000);
+}
+</script>
 </body>
 </html>
