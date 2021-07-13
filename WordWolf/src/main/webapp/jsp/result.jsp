@@ -15,8 +15,7 @@ String winner = (String) request.getAttribute("winner");
 <p>平民の勝ち</p>
 <% } else if(winner.equals("wolf")){ %>
 <p>ウルフの勝ち</p>
-<% } else { %>
-<p>エラー</p>
+
 <% } %>
 <br>
 <br>
