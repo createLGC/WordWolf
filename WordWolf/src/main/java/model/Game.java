@@ -108,7 +108,6 @@ public class Game {
 			return "person";
 		else if(roleMap.get("person") < roleMap.get("wolf"))
 			return "wolf";
-	
-
+		else return null;
 	}
 }
