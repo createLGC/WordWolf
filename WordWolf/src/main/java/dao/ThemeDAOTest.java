@@ -1,13 +1,12 @@
 package dao;
 
-import static org.hamcrest.CoreMatchers.*;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 
@@ -15,13 +14,11 @@ class ThemeDAOTest {
 
 	@Test
 	void testFind() {
-		MatcherAssert.assertThat(this.findAllFromCSV(), hasItems(ThemeDAO.find("ブランド").toArray(new String[0])));
+		MatcherAssert.assertThat(this.findAllFromCSV(), CoreMatchers.hasItems(ThemeDAO.find("動物").toArray(new String[0])));
 	}
-	
-	
-	
+
 	private List<String> findAllFromCSV() {
-		List<String> themeTypeList = new ArrayList<>();
+		List<String> themeList = new ArrayList<>();
 		
 		try (
 			FileInputStream fi = new FileInputStream("src/main/sql/theme.csv");
@@ -44,13 +41,13 @@ class ThemeDAOTest {
 					arr = line.split(",");
 				} else {
 					String[] data = line.split(",");
-					themeTypeList.add(data[1]);
+					themeList.add(data[2]);
 				}
 				//行数のインクリメント
 				i++;	
 			}
 			
-			return themeTypeList;
+			return themeList;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -13,7 +13,10 @@ import dao.ThemeDAO;
 import model.Game;
 
 /**
- * Servlet implementation class Decide3PropsServlet
+ * @see model.Game
+ * decide3Props.jspからウルフの人数、トーク時間、お題の種類を受け取り、
+ * セッションスコープのGameインスタンスgameに設定
+ * noticeThemes.jspにフォワード
  */
 @WebServlet("/Decide3PropsServlet")
 public class Decide3PropsServlet extends HttpServlet {

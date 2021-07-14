@@ -15,7 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.Game;
 
 /**
- * Servlet implementation class VoteServlet
+ * @see model.Game
+ * vote.jspから投票されたプレイヤー名を取得。
+ * {@link Game#decideWinner}で平民とウルフのどっちが勝ったかを判定。
+ * 返り値をwinnerとしてリクエストスコープに保存。
+ * result.jspにフォワード。
  */
 @WebServlet("/VoteServlet")
 public class VoteServlet extends HttpServlet {

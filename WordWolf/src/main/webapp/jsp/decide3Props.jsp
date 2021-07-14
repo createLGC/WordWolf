@@ -14,6 +14,8 @@ Game game = (Game) session.getAttribute("game");
 <title>ワードウルフ</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/InputNumber.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
+<link rel="stylesheet" href="./css/decidePlayer.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -21,7 +23,7 @@ Game game = (Game) session.getAttribute("game");
 <form method="POST" action="/WordWolf/Decide3PropsServlet">
 ウルフの人数
 <p class="spinner_area">
-    <input type="number" value="1" class="counter1" data-max="<%= game.getPlayers().size() / 2 %>" data-min="1" name="numOfWolves">
+    <input type="number" value="1" class="counter1" data-max="<%= (game.getPlayers().size() - 1) / 2 %>" data-min="1" name="numOfWolves">
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </p>
@@ -48,8 +50,16 @@ Game game = (Game) session.getAttribute("game");
 	<% } %>
 </select>
 <br><br>
-<input type="submit" value="ルール決定">
+<input type="submit" value="ルール決定" class="button">
 </form>
+<p><b>※ルール説明</b><span class="ques">?<span class="ex">ワードウルフとは<br>
+単語を使った人狼のようなゲームです。<br><br>
+①ルール決定後にランダムで、村人（多数派）のワードかウルフ（少数派）のワードが配布されます。<br><br>
+②時間切れまで参加者同士で配られたワードについて話し、誰がウルフ（のワードを配られた人）かを探ります。<br>
+※自分が人狼だと思ったらそれを悟られないようにしましょう。<br><br>
+③時間切れになったら投票タイムです。それぞれがウルフだと思う人に投票します。<br><br>
+④最多票が村人だった場合はウルフの勝利です。</span></span></p>
+<img src="./images/wolf-icon.png">
 <script>
 $("input[type=submit]").on('click', e=>{
 	e.preventDefault();

@@ -12,13 +12,19 @@ String winner = (String) request.getAttribute("winner");
 <h1>結果</h1>
 <p>投票結果は・・・</p>
 <% if(winner.equals("person")){ %>
-<p>平民の勝ち</p>
+<p>村人の勝ち</p>
 <% } else if(winner.equals("wolf")){ %>
 <p>ウルフの勝ち</p>
-
+<% } else { %>
+<p>エラー</p>
 <% } %>
 <br>
 <br>
 <a href="/WordWolf/index.jsp">終了</a>
+<script>
+window.onload = ()=>{
+	setTimeout(()=>location.href="/WordWolf/index.jsp", 30000);
+}
+</script>
 </body>
 </html>
