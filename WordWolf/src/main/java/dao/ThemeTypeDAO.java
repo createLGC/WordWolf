@@ -10,23 +10,11 @@ import java.util.List;
 
 /**
  * theme_typeテーブルを操作するクラス
+ * {@link dao.parentDAO}を継承
  * @author 6C106
  *
  */
-public class ThemeTypeDAO {
-	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false&allowPublicKeyRetrieval=true";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
-    
-    static {
-    	try{
-    		Class.forName(DRIVER_PATH);
-    	}catch(ClassNotFoundException e) {
-    		e.printStackTrace();
-    	}
-    }
-    
+public class ThemeTypeDAO extends parentDAO {
     /**
      * theme_typeテーブルの一覧を取得
      * @return
@@ -37,8 +25,8 @@ public class ThemeTypeDAO {
         
         List<String> themeTypeList = new ArrayList<>();
         
-        try (	Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-              PreparedStatement statement = connection.prepareStatement(sql); ) {
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql);) {
                         
             ResultSet result = statement.executeQuery();
             
@@ -50,11 +38,8 @@ public class ThemeTypeDAO {
             return themeTypeList;
             
         } catch (SQLException e) {
-        
             e.printStackTrace();
-            
         }
-       return null;
+        return null;
     }
-   
 }

@@ -21,7 +21,6 @@ public class Game {
 	private Themes themes;
 	
 	/**
-	 * @see model.GameTest
 	 * テスト用コンストラクタ
 	 */
 	Game(){}
