@@ -19,3 +19,5 @@ class ThemesTest {
 		assertEquals(themes.getTheme("person"), "a");
 	}
 }
+
+

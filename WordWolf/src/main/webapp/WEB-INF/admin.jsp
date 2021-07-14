@@ -10,6 +10,14 @@ List<Map<String, String>> themeList = (List<Map<String, String>>) request.getAtt
 <head>
 <meta charset="UTF-8">
 <title>admin</title>
+<style>
+body{
+	text-align: center;
+}
+table{
+	margin: 10px auto;
+}
+</style>
 </head>
 <body>
 <form action="" method="POST">
@@ -19,11 +27,11 @@ List<Map<String, String>> themeList = (List<Map<String, String>>) request.getAtt
 		</thead>
 		<tbody>
 			<%-- themeTypeListからfor文ですべての値を表示 --%>
-			<% %>
+			<% for(String themeType: themeTypeList){ %>
 			<tr>
-				<td><%= %></td>
+				<td><%= themeType %></td>
 			</tr>
-			<% %>
+			<% } %>
 		</tbody>
 	</table>
 	<table>
@@ -35,12 +43,12 @@ List<Map<String, String>> themeList = (List<Map<String, String>>) request.getAtt
 		</thead>
 		<tbody>
 			<%-- themeListからfor文ですべての値を表示 --%>
-			<% %>
+			<% for(Map<String, String> elem: themeList) { %>
 			<tr>
-				<td><%= %></td>
-				<td><%= %></td>
+				<td><%= elem.get("type") %></td>
+				<td><%= elem.get("theme") %></td>
 			</tr>
-			<% %>
+			<% } %>
 		</tbody>
 	</table>
 	<button id="submit">適用</button>
