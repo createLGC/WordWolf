@@ -12,7 +12,7 @@ List<Map<String, String>> themeList = (List<Map<String, String>>) request.getAtt
 <title>admin</title>
 </head>
 <body>
-<form action="/" method="POST">
+<form action="" method="POST">
 	<table>
 		<thead>
 			<tr><th>種類</th></tr>
@@ -52,8 +52,7 @@ document.getElementById('submit').onclick = e=>{
 }
 document.getElementById('cancel').onclick = e=>{
 	e.preventDefault();
-	document.forms[0].method = "GET";
-	document.forms[0].submit();
+	location.href="";
 }
 </script>
 </body>

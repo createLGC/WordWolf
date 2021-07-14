@@ -27,24 +27,14 @@ class ThemeTypeDAOTest {
 		){
 			//読み込み行
 			String line;
-			
-			//読み込み行数の管理
-			int i = 0;
-			
-			//列名を管理する為の配列
-			String[] arr = null;
 
 			//1行ずつ読み込みを行う
-			while ((line = br.readLine()) != null) {
+			for (int i = 0; (line = br.readLine()) != null; i++) {
 				//先頭行は列名
-				if (i == 0) {
-					arr = line.split(",");
-				} else {
+				if (i != 0) {
 					String[] data = line.split(",");
 					themeTypeList.add(data[1]);
 				}
-				//行数のインクリメント
-				i++;	
 			}
 			
 			return themeTypeList;
