@@ -7,11 +7,6 @@ import org.junit.jupiter.api.Test;
 class ThemesTest {
 
 	@Test
-	void testThemes() {
-		fail("まだ実装されていません");
-	}
-
-	@Test
 	void testGetTheme() {
 		Themes themes = new Themes("a", "b");
 		assertEquals(themes.getTheme("person"), "a");
@@ -24,3 +19,5 @@ class ThemesTest {
 	}
 
 }
+
+
