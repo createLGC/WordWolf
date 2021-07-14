@@ -42,7 +42,11 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setContentType("application/json; charset=UTF-8");
+		String themeTypeJSON = request.getParameter("theme_type");
+		String themeJSON = request.getParameter("theme_type");
+		System.out.println(themeTypeJSON);
+		System.out.println(themeJSON);
 		doGet(request, response);
 	}
 

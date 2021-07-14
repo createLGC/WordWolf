@@ -74,6 +74,17 @@ app.component('admin-table', {
 			Array.from(this.$refs.body.children)
 			.filter(elem=>elem.selected)
 			.map(elem=>elem.remove());
+		},
+		getContents(){
+			if(this.isInputing){
+				this.textareaRefs = [];
+				this.isInputing = false;
+			}
+			return Array.from(this.$refs.body.children).map(tr=>{
+				Aray.from(tr.children).map(td=>{
+					td.textContent.trim();
+				});
+			});
 		}
 	}
 });

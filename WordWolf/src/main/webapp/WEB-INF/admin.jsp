@@ -24,9 +24,8 @@ td:hover{
 <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-<form action="" method="POST">
 <div id="app">
-	<admin-table>
+	<admin-table ref="theme_type">
 		<template v-slot:head>
 			<tr><th>種類</th></tr>
 		</template>
@@ -38,7 +37,7 @@ td:hover{
 			<% } %>
 		</template>
 	</admin-table>
-	<admin-table>
+	<admin-table ref="theme">
 		<template v-slot:head>
 			<tr>
 				<th>種類</th>
@@ -57,16 +56,23 @@ td:hover{
 	<button id="submit">適用</button>
 	<button id="cancel">キャンセル</button>
 </div>
-</form>
+<script src="./js/admin.js"></script>
 <script>
+console.log(app.$refs);
 document.getElementById('submit').onclick = e=>{
 	e.preventDefault();
+	const xhr = new XMLHttpRequest();
+	xhr.open("POST", location.href);
+	xhr.send(JSON.stringify({
+		theme_type: app.$refs.theme_type.getContents(),
+		theme: app.$refs.theme.getContents()
+	}));
+	//xhr.onload = ()=>location.href="";
 }
 document.getElementById('cancel').onclick = e=>{
 	e.preventDefault();
 	location.href="";
 }
 </script>
-<script src="./js/admin.js"></script>
 </body>
 </html>
