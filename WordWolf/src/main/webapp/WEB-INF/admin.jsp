@@ -18,9 +18,10 @@ List<Map<String, String>> themeList = (List<Map<String, String>>) request.getAtt
 			<tr><th>種類</th></tr>
 		</thead>
 		<tbody>
+			<%-- themeTypeListからfor文ですべての値を表示 --%>
 			<% %>
 			<tr>
-				<td></td>
+				<td><%= %></td>
 			</tr>
 			<% %>
 		</tbody>
@@ -33,10 +34,11 @@ List<Map<String, String>> themeList = (List<Map<String, String>>) request.getAtt
 			</tr>
 		</thead>
 		<tbody>
+			<%-- themeListからfor文ですべての値を表示 --%>
 			<% %>
 			<tr>
-				<td></td>
-				<td></td>
+				<td><%= %></td>
+				<td><%= %></td>
 			</tr>
 			<% %>
 		</tbody>
