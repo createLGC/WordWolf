@@ -23,7 +23,7 @@ public class ThemeDAO extends parentDAO {
      * @return
      */
 	public static List<Map<String, String>> findAll() {
-		String sql = "SELECT theme_type.name, theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id GROUP BY theme_type.name";
+		String sql = "SELECT theme_type.name, theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id ORDER BY theme_type.name";
         
 		List<Map<String, String>> themeList = new ArrayList<>();
 		

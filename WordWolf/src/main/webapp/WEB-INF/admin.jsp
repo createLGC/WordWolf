@@ -17,42 +17,46 @@ body{
 table{
 	margin: 10px auto;
 }
+td:hover{
+	cursor: pointer;
+}
 </style>
+<script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
 <form action="" method="POST">
-	<table>
-		<thead>
+<div id="app">
+	<admin-table>
+		<template v-slot:head>
 			<tr><th>種類</th></tr>
-		</thead>
-		<tbody>
-			<%-- themeTypeListからfor文ですべての値を表示 --%>
+		</template>
+		<template v-slot:body>
 			<% for(String themeType: themeTypeList){ %>
 			<tr>
 				<td><%= themeType %></td>
 			</tr>
 			<% } %>
-		</tbody>
-	</table>
-	<table>
-		<thead>
+		</template>
+	</admin-table>
+	<admin-table>
+		<template v-slot:head>
 			<tr>
 				<th>種類</th>
 				<th>お題</th>
 			</tr>
-		</thead>
-		<tbody>
-			<%-- themeListからfor文ですべての値を表示 --%>
+		</template>
+		<template v-slot:body>
 			<% for(Map<String, String> elem: themeList) { %>
 			<tr>
 				<td><%= elem.get("type") %></td>
 				<td><%= elem.get("theme") %></td>
 			</tr>
 			<% } %>
-		</tbody>
-	</table>
+		</template>
+	</admin-table>
 	<button id="submit">適用</button>
 	<button id="cancel">キャンセル</button>
+</div>
 </form>
 <script>
 document.getElementById('submit').onclick = e=>{
@@ -63,5 +67,6 @@ document.getElementById('cancel').onclick = e=>{
 	location.href="";
 }
 </script>
+<script src="./js/admin.js"></script>
 </body>
 </html>
