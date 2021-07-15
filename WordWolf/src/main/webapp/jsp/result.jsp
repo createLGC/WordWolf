@@ -9,6 +9,22 @@ String winner = (String) request.getAttribute("winner");
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
+<style>
+body {
+    animation: fadeIn 3.5s ease 0.5s 1 normal;
+    -webkit-animation: fadeIn 2s ease 0s 1 normal;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+</style>
 <body>
 <h1>結果</h1>
 <p>投票結果は・・・</p>
