@@ -36,8 +36,8 @@ Game game = (Game) session.getAttribute("game");
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$('.slider').slick({
-		prevArrow: "<button>←前のプレイヤーのお題へ<i class='fa-solid fa-arrow-left'></i></button>",
-		nextArrow: "<button>次のプレイヤーのお題へ→<i class='fa-solid fa-arrow-right'></i></button>"
+		prevArrow: "<button type='button'>←前のプレイヤーのお題へ</button>",
+		nextArrow: "<button type='button'>次のプレイヤーのお題へ→</button>"
 	});
 </script>
 </body>

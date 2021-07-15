@@ -9,19 +9,22 @@ Game game = (Game) session.getAttribute("game");
 <head>
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 </head>
 <body>
 <h1>カウントダウン</h1>
-<p class="timer">あと
+<p class="timer"><font size="6">あと
 <span id="min"><%= game.getTalkTime() / 60 %></span>分
-<span id="sec"><%= game.getTalkTime() % 60 %></span>秒
+<span id="sec"><%= game.getTalkTime() % 60 %></span>秒</font>
 </p>トーク時間：<input type="button" value="-" id="subTime"><input type="button" value="+" id="addTime">
 <p>
-</p>
+</p><br>
 <input type="button" value="ストップ" id="startOrStop">
-<p id="isCounting">カウントダウン起動中</p>
 <br><br>
-<a href="/WordWolf/jsp/vote.jsp">終了</a>
+<p id="isCounting">カウントダウン起動中</p>
+<br>
+<a href="/WordWolf/jsp/vote.jsp">終了</a><br><br>
+<img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 <script>
 let isCounting = true;
 const min = document.getElementById("min");

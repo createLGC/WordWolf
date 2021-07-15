@@ -13,6 +13,15 @@ List<Player> players = game.getPlayers();
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
+<style>
+.slider {  
+     width: 200px;
+     height: 50px;
+     position: relative;
+     margin: 0 auto 0.5rem; }
+</style>
 </head>
 <body>
 <h1>投票</h1>
@@ -20,7 +29,7 @@ List<Player> players = game.getPlayers();
 <form action="/WordWolf/VoteServlet" method="post">
     <ul class="slider">
     <% for(int i = 0;i < players.size(); i++) { %>
-		<li>
+		<li><br>
 		<%= players.get(i).getName() %>さんの投票は、<br>
 		<% for(Player player2: players) { %>
 			<% if(!players.get(i).getName().equals(player2.getName())) {%>
@@ -30,7 +39,9 @@ List<Player> players = game.getPlayers();
 		</li>
 	<% } %>
 	</ul>
-	<input type="submit" value="送信">
+	<br><br>
+	<input type="submit" value="送信" class="button"><br><br>
+	<img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.1.0/jquery-migrate.min.js"></script>
