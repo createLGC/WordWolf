@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -42,11 +43,14 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json; charset=UTF-8");
-		String themeTypeJSON = request.getParameter("theme_type");
-		String themeJSON = request.getParameter("theme");
-		System.out.println(themeTypeJSON);
-		System.out.println(themeJSON);
+		StringBuffer jb = new StringBuffer();
+		String line = null;
+		try(BufferedReader reader = request.getReader();){
+			while ((line = reader.readLine()) != null)
+				jb.append(line);
+		} catch (Exception e) { /*report an error*/ }
+
+		System.out.println(jb);
 		doGet(request, response);
 	}
 

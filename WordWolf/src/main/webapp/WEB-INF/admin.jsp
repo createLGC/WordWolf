@@ -71,7 +71,7 @@ document.getElementById('submit').onclick = e=>{
 		theme_type: vm.$refs.theme_type.getContents(),
 		theme: vm.$refs.theme.getContents()
 	}));
-	//xhr.onload = ()=>location.href="";
+	xhr.onload = ()=>location.href="";
 }
 document.getElementById('cancel').onclick = e=>{
 	e.preventDefault();
