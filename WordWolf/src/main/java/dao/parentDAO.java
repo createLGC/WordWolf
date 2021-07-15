@@ -20,7 +20,7 @@ abstract class parentDAO {
     
     /**
      * Connectionを取得する関数。子クラスはこれでConectionを使う。
-     * connectionがnullの時connectionを初期化。エラーの時SQLExceptionを送出。
+     * connectionがnullの時connectionを初期化。
      * @return
      * @throws SQLException
      */

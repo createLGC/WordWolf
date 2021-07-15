@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,8 @@ public class AdminServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * お題の種類の一覧とお題の一覧のjsonを受け取り、AdminJSONに変換。
+	 * theme_typeテーブルとthemeテーブルの中身を受け取ったデータと入れ替える。
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StringBuffer jb = new StringBuffer();
@@ -63,19 +66,17 @@ public class AdminServlet extends HttpServlet {
 		try(BufferedReader reader = request.getReader();){
 			while ((line = reader.readLine()) != null)
 				jb.append(line);
-		} catch (IOException e) {
+			
+			ObjectMapper mapper = new ObjectMapper();
+			
+			AdminJSON json = mapper.readValue(jb.toString(), AdminJSON.class);
+			ThemeTypeDAO.replaceAll(json.getThemeTypeList());
+			ThemeDAO.replaceAll(json.getThemeList());
+			System.out.println("tables replaced");
+		}catch(IOException e) {
 			e.printStackTrace();
-		}
-		
-		ObjectMapper mapper = new ObjectMapper();
-		
-	    try {
-	    	AdminJSON json = mapper.readValue(jb.toString(), AdminJSON.class);
-	    	ThemeTypeDAO.replaceAll(json.getThemeTypeList());
-	    	ThemeDAO.replaceAll(json.getThemeList());
-	    	System.out.println("tables replaced");
-	    } catch (IOException e) {
-	      e.printStackTrace();
+		}catch(SQLException e){
+			e.printStackTrace();
 	    }
 		doGet(request, response);
 	}

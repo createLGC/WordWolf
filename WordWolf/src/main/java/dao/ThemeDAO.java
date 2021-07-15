@@ -80,35 +80,30 @@ public class ThemeDAO extends parentDAO {
      * themeテーブルの中身を受け取ったお題のリストで入れ替える。
      * {@link ThemeTypeDAO#replaceAll()}をするときはその後に使用。
      * @param themeList
+     * @throws SQLException
      */
-    public static void replaceAll(List<List<String>> themeList) {
+    public static void replaceAll(List<List<String>> themeList) throws SQLException {
     	String sql = "DELETE FROM theme";
     	
-    	try(PreparedStatement statement = getConnection().prepareStatement(sql);) {
-    		statement.executeUpdate();
-    		for(List<String> row: themeList) {
-    			insert(row);
-    		}
-    	}catch(SQLException e) {
-    		e.printStackTrace();
+    	PreparedStatement statement = getConnection().prepareStatement(sql);
+    	statement.executeUpdate();
+    	for(List<String> row: themeList) {
+    		insert(row);
     	}
     }
     
     /**
      * themeテーブルに一行挿入。{@link ThemeTypeDAO.getId()}でtheme_type.idを取得。
      * @param theme
+     * @throws SQLException
      */
-    private static void insert(List<String> theme) {
-    	int id = ThemeTypeDAO.getId(theme.get(0));
-    	if(id == 0) {return;}
+    private static void insert(List<String> theme) throws SQLException {
     	String sql = "INSERT INTO theme (theme_type_id, theme) VALUES(?, ?)";
-    	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
-    		statement.setInt(1, id);
-    		statement.setString(2, theme.get(1));
-    		statement.executeUpdate();
-    	}catch(SQLException e) {
-    		e.printStackTrace();
-    	}
+    	
+    	PreparedStatement statement = getConnection().prepareStatement(sql);
+    	statement.setInt(1, ThemeTypeDAO.getId(theme.get(0)));
+    	statement.setString(2, theme.get(1));
+    	statement.executeUpdate();
     }
 }
 
