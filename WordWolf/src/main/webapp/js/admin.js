@@ -1,6 +1,4 @@
-const app = Vue.createApp({});
-
-app.component('admin-table', {
+export default {
 	template:`
 		<div>
 			<table border="1" style="border-collapse: collapse">
@@ -81,12 +79,10 @@ app.component('admin-table', {
 				this.isInputing = false;
 			}
 			return Array.from(this.$refs.body.children).map(tr=>{
-				Aray.from(tr.children).map(td=>{
+				Array.from(tr.children).map(td=>{
 					td.textContent.trim();
 				});
 			});
 		}
 	}
-});
-
-app.mount('#app');
+}

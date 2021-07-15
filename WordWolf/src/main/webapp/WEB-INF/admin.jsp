@@ -56,16 +56,20 @@ td:hover{
 	<button id="submit">適用</button>
 	<button id="cancel">キャンセル</button>
 </div>
-<script src="./js/admin.js"></script>
-<script>
-console.log(app.$refs);
+<script type="module">
+import AdminTable from './js/admin.js';
+
+const vm = Vue.createApp({})
+			.component('admin-table', AdminTable)
+			.mount('#app');
+
 document.getElementById('submit').onclick = e=>{
 	e.preventDefault();
 	const xhr = new XMLHttpRequest();
 	xhr.open("POST", location.href);
 	xhr.send(JSON.stringify({
-		theme_type: app.$refs.theme_type.getContents(),
-		theme: app.$refs.theme.getContents()
+		theme_type: vm.$refs.theme_type.getContents(),
+		theme: vm.$refs.theme.getContents()
 	}));
 	//xhr.onload = ()=>location.href="";
 }
