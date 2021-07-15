@@ -20,26 +20,24 @@ abstract class parentDAO {
     
     /**
      * Connectionを取得する関数。子クラスはこれでConectionを使う。
+     * connectionがnullの時connectionを初期化。エラーの時SQLExceptionを送出。
      * @return
      * @throws SQLException
      */
     protected static Connection getConnection() throws SQLException{
     	if(connection == null) {
-    		throw new SQLException("connection has disconnected");
+    		connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
     	}
     	return connection;
     }
     
     /**
-     * JDBCドライバをロード。Connectionをロード。
+     * JDBCドライバをロード。
      */
     static {
     	try{
     		Class.forName(DRIVER_PATH);
-    		connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
     	}catch(ClassNotFoundException e) {
-    		e.printStackTrace();
-    	}catch(SQLException e) {
     		e.printStackTrace();
     	}
     }

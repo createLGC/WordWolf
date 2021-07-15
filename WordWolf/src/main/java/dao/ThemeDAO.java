@@ -100,6 +100,7 @@ public class ThemeDAO extends parentDAO {
      */
     private static void insert(List<String> theme) {
     	int id = ThemeTypeDAO.getId(theme.get(0));
+    	if(id == 0) {return;}
     	String sql = "INSERT INTO theme (theme_type_id, theme) VALUES(?, ?)";
     	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
     		statement.setInt(1, id);

@@ -21,7 +21,8 @@ export default {
 				</tbody>
 			</table>
 			<p>
-				<button type="button" @click="isInputing=true">追加</button>
+				<button type="button" @click="isInputing=true" v-show="!isInputing">追加</button>
+				<button type="button" @click="reset" v-show="isInputing">キャンセル</button>
 				<button type="button" @click="deleteRow">削除</button>
 			</p>
 		</div>
@@ -65,6 +66,9 @@ export default {
 			});
 			this.setRowOnClick(tr);
 			this.$refs.body.insertBefore(tr, this.$refs.textareaRow);
+			this.reset();
+		},
+		reset(){
 			this.textareaRefs = [];
 			this.isInputing = false;
 		},
@@ -75,8 +79,7 @@ export default {
 		},
 		getContents(){
 			if(this.isInputing){
-				this.textareaRefs = [];
-				this.isInputing = false;
+				this.reset();
 			}
 			return Array.from(this.$refs.body.children).map(
 				tr=>Array.from(tr.children).map(

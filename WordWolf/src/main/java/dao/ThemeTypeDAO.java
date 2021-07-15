@@ -61,10 +61,10 @@ public class ThemeTypeDAO extends parentDAO {
      * テーブルに新しいお題の種類を挿入。
      * @param value
      */
-    private static void insert(String value){
+    private static void insert(String name){
     	String sql = "INSERT INTO theme_type (name) VALUES(?)";
     	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
-    		statement.setString(1, value);
+    		statement.setString(1, name);
     		statement.executeUpdate();
     	}catch(SQLException e) {
     		e.printStackTrace();
@@ -77,10 +77,10 @@ public class ThemeTypeDAO extends parentDAO {
      * @param value
      * @return
      */
-    static int getId(String value) { 
+    static int getId(String name) { 
     	String sql = "SELECT id from theme_type WHERE name = ?";
     	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
-    		statement.setString(1, value);
+    		statement.setString(1, name);
     		ResultSet rs = statement.executeQuery();
     		rs.next();
     		return rs.getInt(1);
