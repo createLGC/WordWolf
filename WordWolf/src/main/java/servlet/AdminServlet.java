@@ -19,6 +19,11 @@ import dao.ThemeTypeDAO;
  */
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
+	private class AdminJSON {
+		List<List<String>> theme_type;
+		List<List<String>> theme;
+	}
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
