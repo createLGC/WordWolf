@@ -17,8 +17,8 @@ List<Player> players = game.getPlayers();
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
 <style>
 .slider {  
-     width: 200px;
-     height: 50px;
+     width: 400px;
+     height:150px;
      position: relative;
      margin: 0 auto 0.5rem; }
 </style>
@@ -39,7 +39,7 @@ List<Player> players = game.getPlayers();
 		</li>
 	<% } %>
 	</ul>
-	<br><br>
+	<br>
 	<input type="submit" value="送信" class="button"><br><br>
 	<img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 </form>
