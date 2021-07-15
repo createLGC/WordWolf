@@ -13,11 +13,41 @@ session.removeAttribute("game");
 <link rel="stylesheet" href="./css/alignCenter.css">
 <link rel="stylesheet" href="./css/button.css">
 <link rel="stylesheet" href="./css/blackboard.css">
+<style>
+.manual-slide1 {
+  width: 200px;
+  height:250px;
+  margin: 0 auto 0.5rem;
+  position: relative;
+}
+.manual-slide1 img {
+  position: absolute;
+  padding: 0;
+  width: 420px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation : slideshow1 10s linear infinite;
+}
+@keyframes slideshow1 {
+  0%   { opacity: 0; }
+  28%  { opacity: 1; }
+  50%  { opacity: 1; }
+  75%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <h1>ワードウルフ</h1>
-<img src="./images/wordwolf-top.jpg"><br>
+<div class="manual-slide1">
+  <img src="./images/wordwolf-top.jpg" alt="img">
+  <img src="./images/wordwolf-top2.jpg" alt="img">
+  <img src="./images/wordwolf-top3.jpg" alt="img">
+</div>
+<br>
 <div class="blackboard">
 <p>参加人数</p>
 </div>
