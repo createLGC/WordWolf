@@ -78,7 +78,7 @@ public class ThemeDAO extends parentDAO {
     
     /**
      * themeテーブルの中身を受け取ったお題のリストで入れ替える。
-     * {@link ThemeTypeDAO#replaceAll()}をするときはその後に使用。
+     * {@link ThemeTypeDAO#replaceAll(List<List<String>> themeTypeList)}をするときはその後に使用。
      * @param themeList
      * @throws SQLException
      */
@@ -93,7 +93,7 @@ public class ThemeDAO extends parentDAO {
     }
     
     /**
-     * themeテーブルに一行挿入。{@link ThemeTypeDAO.getId()}でtheme_type.idを取得。
+     * themeテーブルに一行挿入。{@link ThemeTypeDAO.getId(String name)}でtheme_type.idを取得。
      * @param theme
      * @throws SQLException
      */

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * ゲームで使用する情報を保持するクラス。
  * １ゲームに一つだけセッションスコープに保存される。
@@ -28,7 +31,7 @@ public class Game {
 	/**
 	 * @see servlet.DecidePlayerServlet#doPost
 	 * コンストラクタ
-	 * this#playersをplayerNamesで初期化
+	 * this.playersをplayerNamesで初期化
 	 * @param playerNames
 	 */
 	public Game(String[] playerNames) {
@@ -74,7 +77,7 @@ public class Game {
 	}
 	
 	/**
-	 * @see servlet.Decide3PropsServlet#doPost()
+	 * @see servlet.Decide3PropsServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * 引数timeは"分:秒"の形になっているので、
 	 * それを秒に変換し、this.talkTimeに代入
 	 * @param time
@@ -87,7 +90,7 @@ public class Game {
 	}
 	
 	/**
-	 * @see servlet.Decide3PropsServlet#doPost
+	 * @see servlet.Decide3PropsServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * プレイヤーにそれぞれのroleごとにお題を設定。
 	 * 引数themesは{@link dao.ThemeDAO#find()}から受け取る。
 	 * @param themes
@@ -100,7 +103,7 @@ public class Game {
 	}
 	
 	/**
-	 * @see servlet.VoteServlet#doPost
+	 * @see servlet.VoteServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * vote.jspから受け取ったプレーヤー名のリストのうち、
 	 * "person"を持つプレイヤーの名前と"wolf"を持つプレイヤーの名前のどちらが多いかを調べ、
 	 * "person"のほうが多いとき勝者グループである"wolf"を返し、

@@ -54,7 +54,6 @@ public class ThemeTypeDAO extends parentDAO {
     
     /**
      * テーブルに新しいお題の種類を挿入。
-     * エラーの時SQLExceptionを送出
      * @param value
      * @throws SQLException
      */
@@ -67,8 +66,7 @@ public class ThemeTypeDAO extends parentDAO {
     }
     
     /**
-     * お題の種類のidを取得。{@link ThemeDAO#insert}で使用。
-     * エラーの時SQLExceptionを送出。
+     * お題の種類のidを取得。{@link ThemeDAO#insert(List<String> theme)}で使用。
      * @param value
      * @return
      * @throws SQLException

@@ -18,7 +18,8 @@ import dao.ThemeDAO;
 import dao.ThemeTypeDAO;
 
 /**
- * Servlet implementation class AdminServlet
+ * admin.jspにデータベースのデータを送ったり、
+ * データを受け取ってデータベースのデータを入れ替えたりする。
  */
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
@@ -59,6 +60,7 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * お題の種類の一覧とお題の一覧のjsonを受け取り、AdminJSONに変換。
 	 * theme_typeテーブルとthemeテーブルの中身を受け取ったデータと入れ替える。
+	 * 最後に{@link AdminServlet#doGet(HttpServletRequest, HttpServletResponse)}
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StringBuffer jb = new StringBuffer();
