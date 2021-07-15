@@ -12,7 +12,7 @@ export default {
 							<textarea
 							cols="10"
 							rows="1"
-							style="resize:none"
+							style="resize:none;text-align:center;"
 							@keydown.enter.stop="addRow"
 							:ref="setTextareaRef"
 							></textarea>
