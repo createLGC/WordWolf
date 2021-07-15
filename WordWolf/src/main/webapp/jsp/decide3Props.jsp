@@ -50,7 +50,7 @@ Game game = (Game) session.getAttribute("game");
 	<% } %>
 </select>
 <br><br>
-<input type="submit" value="ルール決定" class="button">
+<input type="submit" value="ルール決定" class="button" onclick="clickEvent()">
 </form>
 <p><b>※ルール説明</b><span class="ques">?<span class="ex">ワードウルフとは<br>
 単語を使った人狼のようなゲームです。<br><br>
@@ -67,6 +67,11 @@ $("input[type=submit]").on('click', e=>{
 	document.forms[0].submit();
 });
 onChangeNumber = null;
+</script>
+<script>
+    function clickEvent() {
+        alert('最初のプレイヤーのお題を表示します。（※他のプレイヤーは見ないで下さい。）');
+    }
 </script>
 <script src="${pageContext.request.contextPath}/js/InputNumber.js"></script>
 </body>
