@@ -40,6 +40,10 @@ public class ThemeTypeDAO extends parentDAO {
         return null;
     }
     
+    /**
+     * 受け取ったお題の種類のリストでテーブルの中身を入れ替える。
+     * @param themeTypeList
+     */
     public static void replaceAll(List<List<String>> themeTypeList) {
     	String sql = "DELETE FROM theme_type";
     	
@@ -53,6 +57,10 @@ public class ThemeTypeDAO extends parentDAO {
     	}
     }
     
+    /**
+     * テーブルに新しいお題の種類を挿入。
+     * @param value
+     */
     private static void insert(String value){
     	String sql = "INSERT INTO theme_type (name) VALUES(?)";
     	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
@@ -63,6 +71,12 @@ public class ThemeTypeDAO extends parentDAO {
     	}
     }
     
+    /**
+     * お題の種類のidを取得。{@link ThemeDAO#insert}で使用。
+     * エラーの時0を返す。
+     * @param value
+     * @return
+     */
     static int getId(String value) { 
     	String sql = "SELECT id from theme_type WHERE name = ?";
     	try(PreparedStatement statement = getConnection().prepareStatement(sql);){

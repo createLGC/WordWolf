@@ -77,7 +77,8 @@ public class ThemeDAO extends parentDAO {
     }
     
     /**
-     * {@link ThemeTypeDAO#replaceAll()}の後に使用。
+     * themeテーブルの中身を受け取ったお題のリストで入れ替える。
+     * {@link ThemeTypeDAO#replaceAll()}をするときはその後に使用。
      * @param themeList
      */
     public static void replaceAll(List<List<String>> themeList) {
@@ -93,6 +94,10 @@ public class ThemeDAO extends parentDAO {
     	}
     }
     
+    /**
+     * themeテーブルに一行挿入。{@link ThemeTypeDAO.getId()}でtheme_type.idを取得。
+     * @param theme
+     */
     private static void insert(List<String> theme) {
     	int id = ThemeTypeDAO.getId(theme.get(0));
     	String sql = "INSERT INTO theme (theme_type_id, theme) VALUES(?, ?)";
