@@ -44,7 +44,7 @@ public class AdminServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json; charset=UTF-8");
 		String themeTypeJSON = request.getParameter("theme_type");
-		String themeJSON = request.getParameter("theme_type");
+		String themeJSON = request.getParameter("theme");
 		System.out.println(themeTypeJSON);
 		System.out.println(themeJSON);
 		doGet(request, response);
