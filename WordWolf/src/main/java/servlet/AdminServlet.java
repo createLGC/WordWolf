@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import dao.ThemeDAO;
 import dao.ThemeTypeDAO;
 
@@ -19,9 +21,17 @@ import dao.ThemeTypeDAO;
  */
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
-	private class AdminJSON {
-		List<List<String>> theme_type;
-		List<List<String>> theme;
+	private static class AdminJSON {
+		private List<List<String>> themeTypeList;
+		private List<List<String>> themeList;
+		
+		public List<List<String>> getThemeTypeList() {
+			return this.themeTypeList;
+		}
+		
+		public List<List<String>> getThemeList() {
+			return this.themeList;
+		}
 	}
 	
 	private static final long serialVersionUID = 1L;
@@ -53,9 +63,20 @@ public class AdminServlet extends HttpServlet {
 		try(BufferedReader reader = request.getReader();){
 			while ((line = reader.readLine()) != null)
 				jb.append(line);
-		} catch (Exception e) { /*report an error*/ }
-
-		System.out.println(jb);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+	    try {
+	    	AdminJSON json = mapper.readValue(jb.toString(), AdminJSON.class);
+	    	ThemeTypeDAO.replaceAll(json.getThemeTypeList());
+	    	ThemeDAO.replaceAll(json.getThemeList());
+	    	System.out.println("tables replaced");
+	    } catch (IOException e) {
+	      e.printStackTrace();
+	    }
 		doGet(request, response);
 	}
 

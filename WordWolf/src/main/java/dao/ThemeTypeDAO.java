@@ -1,7 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,8 +23,7 @@ public class ThemeTypeDAO extends parentDAO {
         
         List<String> themeTypeList = new ArrayList<>();
         
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement(sql);) {
+        try (PreparedStatement statement = getConnection().prepareStatement(sql);) {
                         
             ResultSet result = statement.executeQuery();
             
@@ -41,5 +38,42 @@ public class ThemeTypeDAO extends parentDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public static void replaceAll(List<List<String>> themeTypeList) {
+    	String sql = "DELETE FROM theme_type";
+    	
+    	try(PreparedStatement statement = getConnection().prepareStatement(sql);) {
+    		statement.executeUpdate();
+    		for(List<String> row: themeTypeList) {
+    			insert(row.get(0));
+    		}
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    private static void insert(String value){
+    	String sql = "INSERT INTO theme_type (name) VALUES(?)";
+    	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
+    		statement.setString(1, value);
+    		statement.executeUpdate();
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    static int getId(String value) { 
+    	String sql = "SELECT id from theme_type WHERE name = ?";
+    	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
+    		statement.setString(1, value);
+    		ResultSet rs = statement.executeQuery();
+    		rs.next();
+    		return rs.getInt(1);
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return 0;
     }
 }

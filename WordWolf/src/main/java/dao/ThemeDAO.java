@@ -1,7 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,8 +25,7 @@ public class ThemeDAO extends parentDAO {
         
 		List<Map<String, String>> themeList = new ArrayList<>();
 		
-		try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			 PreparedStatement statement = connection.prepareStatement(sql);) {
+		try (PreparedStatement statement = getConnection().prepareStatement(sql);) {
 			
 			ResultSet result = statement.executeQuery();
 			
@@ -61,8 +58,7 @@ public class ThemeDAO extends parentDAO {
         
         List<String> themeList = new ArrayList<>(2);
         
-        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             PreparedStatement statement = connection.prepareStatement(sql);) {
+        try (PreparedStatement statement = getConnection().prepareStatement(sql);) {
             
         	statement.setString(1, themeType);
             ResultSet result = statement.executeQuery();
@@ -78,6 +74,35 @@ public class ThemeDAO extends parentDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    /**
+     * {@link ThemeTypeDAO#replaceAll()}の後に使用。
+     * @param themeList
+     */
+    public static void replaceAll(List<List<String>> themeList) {
+    	String sql = "DELETE FROM theme";
+    	
+    	try(PreparedStatement statement = getConnection().prepareStatement(sql);) {
+    		statement.executeUpdate();
+    		for(List<String> row: themeList) {
+    			insert(row);
+    		}
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    private static void insert(List<String> theme) {
+    	int id = ThemeTypeDAO.getId(theme.get(0));
+    	String sql = "INSERT INTO theme (theme_type_id, theme) VALUES(?, ?)";
+    	try(PreparedStatement statement = getConnection().prepareStatement(sql);){
+    		statement.setInt(1, id);
+    		statement.setString(2, theme.get(1));
+    		statement.executeUpdate();
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}
     }
 }
 

@@ -66,10 +66,10 @@ const vm = Vue.createApp({})
 document.getElementById('submit').onclick = e=>{
 	e.preventDefault();
 	const xhr = new XMLHttpRequest();
-	xhr.open("POST", location.href);
+	xhr.open("POST", location.href, false);
 	xhr.send(JSON.stringify({
-		theme_type: vm.$refs.theme_type.getContents(),
-		theme: vm.$refs.theme.getContents()
+		themeTypeList: vm.$refs.theme_type.getContents(),
+		themeList: vm.$refs.theme.getContents()
 	}));
 	xhr.onload = ()=>location.href="";
 }

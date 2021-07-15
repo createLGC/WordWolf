@@ -55,5 +55,4 @@ $(function(){
 		//プレーヤー名入力欄を増減させる
 		onChangeNumber?.(target.val(), oldNum);
     }
-  
 });
