@@ -106,5 +106,3 @@ public class ThemeDAO extends parentDAO {
     	statement.executeUpdate();
     }
 }
-
-
