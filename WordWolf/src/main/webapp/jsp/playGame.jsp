@@ -51,9 +51,9 @@ document.getElementById('addTime').onclick = e=>{
 }
 
 document.getElementById('subTime').onclick = e=>{
-	const secValue = Number.parseInt(sec.textContent);
 	sec.textContent -= 10;
-	if(sec.textContent < 0){
+	const secValue = Number.parseInt(sec.textContent);
+	if(secValue < 0){
 		min.textContent--;
 		sec.textContent = secValue + 60;
 	}

@@ -78,11 +78,11 @@ export default {
 				this.textareaRefs = [];
 				this.isInputing = false;
 			}
-			return Array.from(this.$refs.body.children).map(tr=>{
-				Array.from(tr.children).map(td=>{
-					td.textContent.trim();
-				});
-			});
+			return Array.from(this.$refs.body.children).map(
+				tr=>Array.from(tr.children).map(
+					td=>td.textContent.trim()
+				)
+			);
 		}
 	}
 }
