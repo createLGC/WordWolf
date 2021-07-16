@@ -57,8 +57,12 @@ document.getElementById('subTime').onclick = e=>{
 	sec.textContent -= 10;
 	const secValue = Number.parseInt(sec.textContent);
 	if(secValue < 0){
-		min.textContent--;
-		sec.textContent = secValue + 60;
+		if(min.textContent == 0){
+			sec.textContent = 0;
+		}else{
+			min.textContent--;
+			sec.textContent = secValue + 60;
+		}
 	}
 }
 
