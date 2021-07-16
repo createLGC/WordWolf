@@ -8,10 +8,11 @@ Game game = (Game) session.getAttribute("game");
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" type="text/css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 <style>
 .slider { right: 20px }
