@@ -24,14 +24,13 @@ public class Game {
 	private Themes themes;
 	
 	/**
-	 * テスト用コンストラクタ
+	 * テスト用コンストラクタ。
 	 */
 	Game(){}
 	
 	/**
-	 * @see servlet.DecidePlayerServlet#doPost
-	 * コンストラクタ
-	 * this.playersをplayerNamesで初期化
+	 * コンストラクタ。this.playersをplayerNamesで初期化。
+	 * @see servlet.DecidePlayerServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * @param playerNames
 	 */
 	public Game(String[] playerNames) {
@@ -42,17 +41,17 @@ public class Game {
 	}
 	
 	/**
+	 * ゲームに参加しているプレイヤーのリストを取得。
 	 * @see model.Player
-	 * ゲームに参加しているプレイヤーのリストを取得
-	 * @return
+	 * @return players
 	 */
 	public List<Player> getPlayers(){
 		return this.players;
 	}
 	
 	/**
-	 * @see servlet.Decide3PropsServlet#doPost
 	 * numOfWolvesの人数分this.playersをwolfにする
+	 * @see servlet.Decide3PropsServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * @param numOfWolves
 	 */
 	public void setWolves(int numOfWolves) {
@@ -70,16 +69,15 @@ public class Game {
 	
 	/**
 	 * トーク時間(秒)を取得。
-	 * @return
+	 * @return talkTime
 	 */
 	public int getTalkTime() {
 		return this.talkTime;
 	}
 	
 	/**
+	 * 引数timeは"分:秒"の形になっているので、それを秒に変換し、this.talkTimeに代入。
 	 * @see servlet.Decide3PropsServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * 引数timeは"分:秒"の形になっているので、
-	 * それを秒に変換し、this.talkTimeに代入
 	 * @param time
 	 */
 	public void setTalkTime(String time) {
@@ -90,9 +88,9 @@ public class Game {
 	}
 	
 	/**
-	 * @see servlet.Decide3PropsServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * プレイヤーにそれぞれのroleごとにお題を設定。
-	 * 引数themesは{@link dao.ThemeDAO#find()}から受け取る。
+	 * 引数themesは{@link dao.ThemeDAO#find(String name)}から受け取る。
+	 * @see servlet.Decide3PropsServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * @param themes
 	 */
 	public void setThemes(List<String> themes) {
@@ -103,12 +101,12 @@ public class Game {
 	}
 	
 	/**
-	 * @see servlet.VoteServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * vote.jspから受け取ったプレーヤー名のリストのうち、
 	 * "person"を持つプレイヤーの名前と"wolf"を持つプレイヤーの名前のどちらが多いかを調べ、
 	 * "person"のほうが多いとき勝者グループである"wolf"を返し、
 	 * "wolf"のほうが多いとき"person"を返す。
 	 * どちらでもないときはnullを返す。
+	 * @see servlet.VoteServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * @param wolfNames
 	 * @return "person" または "wolf"
 	 */

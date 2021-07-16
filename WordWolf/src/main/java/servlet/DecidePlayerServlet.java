@@ -15,17 +15,22 @@ import dao.ThemeTypeDAO;
 import model.Game;
 
 /**
- * @see model.Game
- * inde.jspからゲームに参加するプレイヤー名を取得。
+ * index.jspからゲームに参加するプレイヤー名を取得。
  * Gameインスタンスを作成し、セッションスコープに保存。
- * お題の種類の一覧を取得し{@link ThemeTypeDAO#findAll()}、リクエストスコープに保存。
+ * お題の種類の一覧を取得し({@link ThemeTypeDAO#findAll()})、リクエストスコープに保存。
  * decide3Props.jspにフォワード。
+ * @see model.Game
  */
 @WebServlet("/DecidePlayerServlet")
 public class DecidePlayerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * index.jspからゲームに参加するプレイヤー名を取得。
+	 * Gameインスタンスを作成し、セッションスコープに保存。
+	 * お題の種類の一覧を取得し({@link ThemeTypeDAO#findAll()})、リクエストスコープに保存。
+	 * decide3Props.jspにフォワード。
+	 * @see model.Game
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

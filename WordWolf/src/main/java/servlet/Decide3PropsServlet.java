@@ -13,16 +13,20 @@ import dao.ThemeDAO;
 import model.Game;
 
 /**
- * @see model.Game
  * decide3Props.jspからウルフの人数、トーク時間、お題の種類を受け取り、
- * セッションスコープのGameインスタンスgameに設定
- * noticeThemes.jspにフォワード
+ * セッションスコープのGameインスタンスgameに設定。
+ * noticeThemes.jspにフォワード。
+ * @see model.Game
  */
 @WebServlet("/Decide3PropsServlet")
 public class Decide3PropsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * decide3Props.jspからウルフの人数、トーク時間、お題の種類を受け取り、
+	 * セッションスコープのGameインスタンスgameに設定。
+	 * noticeThemes.jspにフォワード。
+	 * @see model.Game
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,14 +23,32 @@ import dao.ThemeTypeDAO;
  */
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
+	/**
+	 * 受け取ったJSONを格納するクラス。
+	 * @see AdminServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @author 6C106
+	 */
 	private static class AdminJSON {
+		/**
+		 * お題の種類のリスト
+		 */
 		private List<List<String>> themeTypeList;
+		
+		/**
+		 * お題のリスト
+		 */
 		private List<List<String>> themeList;
 		
+		/**
+		 * @return themeTypeList
+		 */
 		public List<List<String>> getThemeTypeList() {
 			return this.themeTypeList;
 		}
 		
+		/**
+		 * @return themeList
+		 */
 		public List<List<String>> getThemeList() {
 			return this.themeList;
 		}
@@ -39,11 +57,11 @@ public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 * {@link ThemeTypeDAO#findAll()}でtheme_typeテーブルの一覧を取得。
-	 * {@link ThemeDAO#findAll()}で(theme_typeテーブルからお題の種類、themeテーブルからお題)の一覧を取得、
-	 * それぞれリクエストスコープに保存
-	 * admin.jspにフォワードし、表示
+	 * {@link ThemeDAO#findAll()}で(theme_typeテーブルからお題の種類、themeテーブルからお題)の一覧を取得。
+	 * それぞれリクエストスコープに保存。
+	 * admin.jspにフォワードし、表示。
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<String> themeTypeList = ThemeTypeDAO.findAll();
@@ -57,10 +75,10 @@ public class AdminServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 * お題の種類の一覧とお題の一覧のjsonを受け取り、AdminJSONに変換。
 	 * theme_typeテーブルとthemeテーブルの中身を受け取ったデータと入れ替える。
-	 * 最後に{@link AdminServlet#doGet(HttpServletRequest, HttpServletResponse)}
+	 * 最後に{@link AdminServlet#doGet(HttpServletRequest request, HttpServletResponse response)}
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StringBuffer jb = new StringBuffer();

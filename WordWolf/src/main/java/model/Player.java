@@ -1,14 +1,25 @@
 package model;
 
 /**
- * @see model.Game
  * プレーヤーの情報を保持。Game#playersになる。
+ * @see model.Game
  * @author 6C106
  */
 public class Player {
-	private String name; // プレイヤー名
-	private String role = "person"; // "person" または "wolf"
-	private String theme; // お題
+	/**
+	 * プレイヤー名
+	 */
+	private String name;
+	
+	/**
+	 * プレイヤーの役割。"person"または"wolf"。初期値は"person"
+	 */
+	private String role = "person";
+	
+	/**
+	 * プレイヤーの持つお題。
+	 */
+	private String theme;
 	
 	/**
 	 * プレイヤー名を受け取って初期化
@@ -20,7 +31,7 @@ public class Player {
 	
 	/**
 	 * プレイヤー名を返す関数
-	 * @return
+	 * @return name
 	 */
 	public String getName() {
 		return name;
@@ -28,7 +39,7 @@ public class Player {
 	
 	/**
 	 * "person" または "wolf"を返す
-	 * @return
+	 * @return "person" または "wolf"
 	 */
 	public String getRole() {
 		return role;
@@ -44,7 +55,7 @@ public class Player {
 	
 	/**
 	 * お題を返す関数
-	 * @return
+	 * @return theme
 	 */
 	public String getTheme() {
 		return theme;

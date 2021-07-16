@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * themeテーブルにアクセスするクラス
- * {@link dao.parentDAO}を継承
+ * themeテーブルにアクセスするクラス。
+ * {@link dao.parentDAO}を継承。
  * @author 6C106
  *
  */
@@ -18,7 +18,7 @@ public class ThemeDAO extends parentDAO {
     /**
      * theme_typeテーブル、themeテーブルにアクセスし、
      * お題の種類ごとにグループ化された(お題の種類、お題)の一覧を取得
-     * @return
+     * @return themeList
      */
 	public static List<Map<String, String>> findAll() {
 		String sql = "SELECT theme_type.name, theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id ORDER BY theme_type.name";
@@ -51,7 +51,7 @@ public class ThemeDAO extends parentDAO {
      * themeテーブルにアクセスし、
      * お題の種類がthemeTypeのものをランダムに二つとってくる。
      * @param themeType
-     * @return
+     * @return themeList
      */
     public static List<String> find(String themeType) {
         String sql = "SELECT theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id WHERE theme_type.name = ? ORDER BY RAND() LIMIT 2";
@@ -78,7 +78,7 @@ public class ThemeDAO extends parentDAO {
     
     /**
      * themeテーブルの中身を受け取ったお題のリストで入れ替える。
-     * {@link ThemeTypeDAO#replaceAll(List<List<String>> themeTypeList)}をするときはその後に使用。
+     * {@link ThemeTypeDAO#replaceAll(List<List<String>> themeTypeList)}を使うときはその後に使用。
      * @param themeList
      * @throws SQLException
      */
@@ -93,7 +93,7 @@ public class ThemeDAO extends parentDAO {
     }
     
     /**
-     * themeテーブルに一行挿入。{@link ThemeTypeDAO.getId(String name)}でtheme_type.idを取得。
+     * themeテーブルに一行挿入。{@link ThemeTypeDAO#getId(String name)}でtheme_type.idを取得。
      * @param theme
      * @throws SQLException
      */

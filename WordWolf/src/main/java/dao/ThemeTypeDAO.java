@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * theme_typeテーブルを操作するクラス
- * {@link dao.parentDAO}を継承
+ * theme_typeテーブルを操作するクラス。
+ * {@link dao.parentDAO}を継承。
  * @author 6C106
  *
  */
 public class ThemeTypeDAO extends parentDAO {
     /**
-     * theme_typeテーブルの一覧を取得
-     * @return
+     * theme_typeテーブルの一覧を取得。
+     * @return themeTypeList
      */
     public static List<String> findAll() {
         
@@ -54,7 +54,7 @@ public class ThemeTypeDAO extends parentDAO {
     
     /**
      * テーブルに新しいお題の種類を挿入。
-     * @param value
+     * @param name
      * @throws SQLException
      */
     private static void insert(String name) throws SQLException {
@@ -67,8 +67,8 @@ public class ThemeTypeDAO extends parentDAO {
     
     /**
      * お題の種類のidを取得。{@link ThemeDAO#insert(List<String> theme)}で使用。
-     * @param value
-     * @return
+     * @param name
+     * @return id
      * @throws SQLException
      */
     static int getId(String name) throws SQLException { 
