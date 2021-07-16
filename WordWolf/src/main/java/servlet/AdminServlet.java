@@ -75,8 +75,6 @@ public class AdminServlet extends HttpServlet {
 			ThemeTypeDAO.replaceAll(json.getThemeTypeList());
 			ThemeDAO.replaceAll(json.getThemeList());
 			System.out.println("tables replaced");
-		}catch(IOException e) {
-			e.printStackTrace();
 		}catch(SQLException e){
 			e.printStackTrace();
 	    }

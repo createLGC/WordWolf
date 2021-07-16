@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .button {
-      position: relative;
+    position: relative;
     font-weight: bold;
     padding: 5px 15px;
     margin: 0px 5px;
@@ -14,7 +14,7 @@
     box-shadow: 0 3px 0 rgb(0, 0, 0, 0.3);
 }
 .button {
-      position: relative;
+    position: relative;
     font-weight: bold;
     padding: 5px 15px;
     margin: 0px 5px;
