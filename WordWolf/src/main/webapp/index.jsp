@@ -15,8 +15,16 @@ session.removeAttribute("game");
 <link rel="stylesheet" href="./css/button.css">
 <link rel="stylesheet" href="./css/blackboard.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+#admin-link{
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+</style>
 </head>
 <body>
+<a id="admin-link" href="javascript:goToAdmin()">開発者ページへ</a>
 <h1>ワードウルフ</h1>
 <img src="./images/wordwolf-top.jpg"><br>
 <div class="blackboard">
@@ -43,6 +51,11 @@ session.removeAttribute("game");
 ④最多票が村人だった場合はウルフの勝利です。</span></span></p>
 <img src="./images/wolf-icon.png">
 <script>
+function goToAdmin(){
+	const pwd = window.prompt("パスワードを入力");
+	if(pwd === "admin")
+		location.href = "/WordWolf/admin";
+}
 $(window).on('load', ()=>{
 	for(let i = 0; i < $('.counter1').first().val(); i++){
 		addPlayerInput(i);
