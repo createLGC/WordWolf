@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.button {
+    position: relative;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin: 0px 5px;
+    border-radius: 30px;/*角の丸み*/
+    font-size: 18px;/*文字サイズ*/
+    background-color: #00a41a;/*背景色*/
+    color: #fff;/*文字色*/
+    display: inline-block;
+    text-shadow: 1px 1px 0px rgb(0, 0, 0, 0.3);
+    box-shadow: 0 3px 0 rgb(0, 0, 0, 0.3);
+}
+.button {
+    position: relative;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin: 0px 5px;
+    border-radius: 30px;/*角の丸み*/
+    font-size: 18px;/*文字サイズ*/
+    background-color: #00a41a;/*背景色*/
+    color: #fff;/*文字色*/
+    display: inline-block;
+    text-shadow: 1px 1px 0px rgb(0, 0, 0, 0.3);
+    box-shadow: 0 3px 0 rgb(0, 0, 0, 0.3);
+}
+.button:hover  {
+    background-color: #cc0000;/*触れたときの背景色*/
+    color: #fff;/*触れたときの文字色*/
+    box-shadow: 0 0px 0 rgb(0, 0, 0, 0.3);
+    animation-play-state: paused;
+    top: 3px;
+}
