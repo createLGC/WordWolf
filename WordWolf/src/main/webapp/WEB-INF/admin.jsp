@@ -66,11 +66,13 @@ const vm = Vue.createApp({})
 document.getElementById('submit').onclick = e=>{
 	e.preventDefault();
 	const xhr = new XMLHttpRequest();
-	xhr.open("POST", location.href, false);
+	xhr.open("POST", location.href);
 	xhr.send(JSON.stringify({
 		themeTypeList: vm.$refs.theme_type.getContents(),
 		themeList: vm.$refs.theme.getContents()
 	}));
+	xhr.onload = ()=>alert("データべースを更新しました。");
+	xhr.onerror = ()=>alert("処理が失敗しました。");
 }
 document.getElementById('cancel').onclick = e=>{
 	e.preventDefault();
