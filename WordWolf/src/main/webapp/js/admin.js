@@ -46,24 +46,28 @@ export default {
 			}
 		},
 		setRowOnClick(elem){
-			elem.onclick = ()=>{
-				Array.from(this.$refs.body.children).map(elem=>{
-					elem.style.backgroundColor = "white";
-					elem.style.color = "black";
-					elem.selected = false;
-				});
+			elem.onclick = e=>{
+				if(!e.shiftKey){
+					Array.from(this.$refs.body.children).forEach(elem=>{
+						elem.style.backgroundColor = "white";
+						elem.style.color = "black";
+						elem.selected = false;
+					});
+				}
 				elem.style.backgroundColor = "#777";
 				elem.style.color = "white";
 				elem.selected = true;
 			};
 		},
-		addRow(){
+		addRow(e){
+			e.preventDefault();
 			const tr = document.createElement('tr');
-			this.textareaRefs.forEach(elem=>{
+			for(let elem of this.textareaRefs){
+				if(!elem.value) return;
 				const td = document.createElement('td');
 				td.textContent = elem.value;
 				tr.appendChild(td);
-			});
+			}
 			this.setRowOnClick(tr);
 			this.$refs.body.insertBefore(tr, this.$refs.textareaRow);
 			this.reset();

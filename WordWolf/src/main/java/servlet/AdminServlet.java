@@ -80,7 +80,6 @@ public class AdminServlet extends HttpServlet {
 		}catch(SQLException e){
 			e.printStackTrace();
 	    }
-		doGet(request, response);
 	}
 
 }
