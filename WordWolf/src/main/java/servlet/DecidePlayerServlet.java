@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,8 +44,11 @@ public class DecidePlayerServlet extends HttpServlet {
 		session.setAttribute("game", game);
 		
 		//お題の種類の一覧を取得しリクエストスコープに保存
-		List<String> themeTypeList = ThemeTypeDAO.findAll();
-		request.setAttribute("themeTypeList", themeTypeList);
+		try {
+			request.setAttribute("themeTypeList", ThemeTypeDAO.findAll());
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
 		RequestDispatcher dispatcher = 
 				request.getRequestDispatcher
