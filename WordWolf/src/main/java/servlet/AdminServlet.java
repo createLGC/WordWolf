@@ -66,12 +66,13 @@ public class AdminServlet extends HttpServlet {
 		try {
 			request.setAttribute("themeTypeList", ThemeTypeDAO.findAll());
 			request.setAttribute("themeList", ThemeDAO.findAll());
-			request
-			.getRequestDispatcher("/WEB-INF/admin.jsp")
-			.forward(request, response);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
+		request
+		.getRequestDispatcher("/WEB-INF/admin.jsp")
+		.forward(request, response);
 	}
 
 	/**
