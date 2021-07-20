@@ -51,7 +51,7 @@ session.removeAttribute("game");
 ③時間切れになったら投票タイムです。それぞれがウルフだと思う人に投票します。<br><br>
 ④最多票が村人だった場合はウルフの勝利です。</span></span></p>
 <img src="${pageContext.request.contextPath}/images/wolf-icon.png">
-<br><br><a href="${pageContext.request.contextPath}/jsp/help.jsp">ヘルプ</a>
+<br><a href="${pageContext.request.contextPath}/jsp/help.jsp">ヘルプ</a>
 <script>
 function goToAdmin(){
 	const pwd = window.prompt("パスワードを入力");
