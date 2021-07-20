@@ -54,7 +54,6 @@ List<Player> players = game.getPlayers();
 	});
 	
 	const length = document.getElementById('numOfPlayers').getAttribute('numOfPlayers');
-	console.log(length);
 	$('input[type=submit]').on('click', e=>{
 		e.preventDefault();
 		for(let i = 0; i < length; i++){

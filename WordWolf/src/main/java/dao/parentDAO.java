@@ -18,7 +18,7 @@ abstract class parentDAO {
 	/**
 	 * ローカルのデータベースのURL
 	 */
-    private static final String LOCAL_URL = "jdbc:mysql://localhost/word_wolf?user=root&password=root&useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String LOCAL_DATABASE_URL = "jdbc:mysql://localhost/word_wolf?user=root&password=root&useSSL=false&allowPublicKeyRetrieval=true";
     
     /**
      * 環境によって変わるデータベースのURLを保存する変数
@@ -50,7 +50,7 @@ abstract class parentDAO {
     	try{
     		Class.forName(DRIVER_PATH);
     		String cleardb = System.getenv("CLEARDB_DATABASE_URL");
-    		DATABASE_URL = cleardb != null ? cleardb : LOCAL_URL;
+    		DATABASE_URL = cleardb != null ? cleardb : LOCAL_DATABASE_URL;
     	}catch(ClassNotFoundException e) {
     		e.printStackTrace();
     	}
