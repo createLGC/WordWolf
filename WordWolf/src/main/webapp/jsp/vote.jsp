@@ -26,8 +26,7 @@ List<Player> players = game.getPlayers();
 </head>
 <body>
 <h1>投票</h1>
-<div id="numOfPlayers" style="display:none" numOfPlayers="<%= players.size() %>"></div>
-<form action="/WordWolf/VoteServlet" method="post">
+<form action="${pageContext.request.contextPath}/VoteServlet" method="post">
     <ul class="slider">
     <% for(int i = 0;i < players.size(); i++) { %>
 		<li><br>
@@ -53,7 +52,7 @@ List<Player> players = game.getPlayers();
 		nextArrow: "<i class='fa-solid fa-arrow-right slick-next'></i>"
 	});
 	
-	const length = document.getElementById('numOfPlayers').getAttribute('numOfPlayers');
+	const length = <%= players.size() %>;
 	$('input[type=submit]').on('click', e=>{
 		e.preventDefault();
 		for(let i = 0; i < length; i++){

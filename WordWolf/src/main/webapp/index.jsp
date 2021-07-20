@@ -10,11 +10,11 @@ session.removeAttribute("game");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ワードウルフ</title>
-<link rel="stylesheet" href="./css/InputNumber.css">
-<link rel="stylesheet" href="./css/decidePlayer.css">
-<link rel="stylesheet" href="./css/alignCenter.css">
-<link rel="stylesheet" href="./css/button.css">
-<link rel="stylesheet" href="./css/blackboard.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/InputNumber.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/decidePlayer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/blackboard.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 #admin-link{
@@ -27,7 +27,7 @@ session.removeAttribute("game");
 <body>
 <a id="admin-link" href="javascript:goToAdmin()">開発者ページへ</a>
 <h1>ワードウルフ</h1>
-<img src="./images/wordwolf-top.jpg"><br>
+<img src="${pageContext.request.contextPath}/images/wordwolf-top.jpg"><br>
 <div class="blackboard">
 <p>参加人数</p>
 </div>
@@ -36,7 +36,7 @@ session.removeAttribute("game");
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </div>
-<form action="/WordWolf/DecidePlayerServlet" method="post">
+<form action="${pageContext.request.contextPath}/DecidePlayerServlet" method="post">
 	<div id="player_input_container"></div>
 	<input type="submit" value="決定" class="button">
 </form>
@@ -50,12 +50,12 @@ session.removeAttribute("game");
 ※自分が人狼だと思ったらそれを悟られないようにしましょう。<br><br>
 ③時間切れになったら投票タイムです。それぞれがウルフだと思う人に投票します。<br><br>
 ④最多票が村人だった場合はウルフの勝利です。</span></span></p>
-<img src="./images/wolf-icon.png">
+<img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 <script>
 function goToAdmin(){
 	const pwd = window.prompt("パスワードを入力");
 	if(pwd === "admin")
-		location.href = "/WordWolf/admin";
+		location.href = "${pageContext.request.contextPath}/admin";
 }
 $(window).on('load', ()=>{
 	for(let i = 0; i < $('.counter1').first().val(); i++){
@@ -91,6 +91,6 @@ function onChangeNumber(newNum, oldNum){
 	}	
 }     
 </script>
-<script src="./js/InputNumber.js"></script>
+<script src="${pageContext.request.contextPath}/js/InputNumber.js"></script>
 </body>
 </html>

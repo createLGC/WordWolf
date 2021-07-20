@@ -16,12 +16,12 @@ Game game = (Game) session.getAttribute("game");
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/InputNumber.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
-<link rel="stylesheet" href="./css/decidePlayer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/decidePlayer.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <h1>ルール設定</h1>
-<form method="POST" action="/WordWolf/Decide3PropsServlet">
+<form method="POST" action="${pageContext.request.contextPath}/Decide3PropsServlet">
 ウルフの人数
 <p class="spinner_area">
     <input type="number" value="1" class="counter1" data-max="<%= (game.getPlayers().size() - 1) / 2 %>" data-min="1" name="numOfWolves">
@@ -60,7 +60,7 @@ Game game = (Game) session.getAttribute("game");
 ※自分が人狼だと思ったらそれを悟られないようにしましょう。<br><br>
 ③時間切れになったら投票タイムです。それぞれがウルフだと思う人に投票します。<br><br>
 ④最多票が村人だった場合はウルフの勝利です。</span></span></p>
-<img src="./images/wolf-icon.png">
+<img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 <script>
 $("input[type=submit]").on('click', e=>{
 	e.preventDefault();

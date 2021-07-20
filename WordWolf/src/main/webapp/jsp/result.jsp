@@ -37,11 +37,11 @@ body {
 <p>エラー</p>
 <% } %>
 <br>
-<a href="/WordWolf/index.jsp">終了</a><br><br>
+<a href="${pageContext.request.contextPath}/index.jsp">終了</a><br><br>
 <img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 <script>
 window.onload = ()=>{
-	setTimeout(()=>location.href="/WordWolf/index.jsp", 30000);
+	setTimeout(()=>location.href="${pageContext.request.contextPath}/index.jsp", 30000);
 }
 </script>
 </body>
