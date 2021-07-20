@@ -15,6 +15,7 @@ session.removeAttribute("game");
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blackboard.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/slideimages.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 #admin-link{
@@ -27,7 +28,12 @@ session.removeAttribute("game");
 <body>
 <a id="admin-link" href="javascript:goToAdmin()">開発者ページへ</a>
 <h1>ワードウルフ</h1>
-<img src="${pageContext.request.contextPath}/images/wordwolf-top.jpg"><br>
+<div class="slide" id="makeImg">
+  <img src="${pageContext.request.contextPath}/images/wordwolf-top.jpg">
+  <img src="${pageContext.request.contextPath}/images/wordwolf-top2.jpg">
+  <img src="${pageContext.request.contextPath}/images/wordwolf-top3.jpg">
+</div>
+<br>
 <div class="blackboard">
 <p>参加人数</p>
 </div>
