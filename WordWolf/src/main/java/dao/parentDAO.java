@@ -8,7 +8,6 @@ import java.sql.SQLException;
  * word_wolfスキーマにアクセスする、DAOの抽象クラス。
  * テーブルにアクセスするときはこのクラスを継承。
  * @author 6C106
- *
  */
 abstract class parentDAO {
 	/**
@@ -17,19 +16,14 @@ abstract class parentDAO {
 	private static final String DRIVER_PATH = "com.mysql.cj.jdbc.Driver";
 	
 	/**
-	 * データベースのURL
+	 * ローカルのデータベースのURL
 	 */
-    private static final String URL = "jdbc:mysql://localhost/word_wolf?useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String LOCAL_URL = "jdbc:mysql://localhost/word_wolf?user=root&password=root&useSSL=false&allowPublicKeyRetrieval=true";
     
     /**
-     * データベースのユーザーネーム
+     * 環境によって変わるデータベースのURLを保存する変数
      */
-    private static final String USERNAME = "root";
-    
-    /**
-     * データベースのパスワード
-     */
-    private static final String PASSWORD = "root";
+    private static String DATABASE_URL = null;
     
     /**
      * データべースとのコネクション
@@ -44,17 +38,19 @@ abstract class parentDAO {
      */
     protected static Connection getConnection() throws SQLException{
     	if(connection == null) {
-    		connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    		connection = DriverManager.getConnection(DATABASE_URL);
     	}
     	return connection;
     }
     
     /**
-     * JDBCドライバをロード。
+     * JDBCドライバをロード。データベースのURLを決定。
      */
     static {
     	try{
     		Class.forName(DRIVER_PATH);
+    		String cleardb = System.getenv("CLEARDB_DATABASE_URL");
+    		DATABASE_URL = cleardb != null ? cleardb : LOCAL_URL;
     	}catch(ClassNotFoundException e) {
     		e.printStackTrace();
     	}
