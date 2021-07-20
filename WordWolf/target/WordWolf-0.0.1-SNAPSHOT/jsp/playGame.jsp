@@ -8,6 +8,7 @@ Game game = (Game) session.getAttribute("game");
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ワードウルフ</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 </head>
@@ -23,7 +24,7 @@ Game game = (Game) session.getAttribute("game");
 <br><br>
 <p id="isCounting">カウントダウン起動中</p>
 <br>
-<a href="/WordWolf/jsp/vote.jsp">終了</a><br><br>
+<a href="${pageContext.request.contextPath}/jsp/vote.jsp">終了</a><br><br>
 <img src="${pageContext.request.contextPath}/images/wolf-icon.png">
 <script>
 let isCounting = true;
@@ -33,7 +34,7 @@ setInterval(function(){
 	if(!isCounting) return;
 	
 	if(min.textContent == 0 && sec.textContent == 0){
-		location.href = "vote.jsp";
+		location.href = "${pageContext.request.contextPath}/jsp/vote.jsp";
 		return;
 	}
 	sec.textContent--;

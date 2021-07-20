@@ -49,7 +49,7 @@ abstract class parentDAO {
     static {
     	try{
     		Class.forName(DRIVER_PATH);
-    		String cleardb = System.getenv("CLEARDB_DATABASE_URL");
+    		final String cleardb = System.getenv("CLEARDB_DATABASE_URL");
     		DATABASE_URL = cleardb != null ? cleardb : LOCAL_DATABASE_URL;
     	}catch(ClassNotFoundException e) {
     		e.printStackTrace();

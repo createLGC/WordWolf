@@ -9,10 +9,11 @@ List<Player> players = game.getPlayers();
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" type="text/css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <meta charset="UTF-8">
 <title>ワードウルフ</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/alignCenter.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
 <style>
@@ -25,8 +26,7 @@ List<Player> players = game.getPlayers();
 </head>
 <body>
 <h1>投票</h1>
-<div id="numOfPlayers" style="display:none" numOfPlayers="<%= players.size() %>"></div>
-<form action="/WordWolf/VoteServlet" method="post">
+<form action="${pageContext.request.contextPath}/VoteServlet" method="post">
     <ul class="slider">
     <% for(int i = 0;i < players.size(); i++) { %>
 		<li><br>
@@ -52,8 +52,7 @@ List<Player> players = game.getPlayers();
 		nextArrow: "<i class='fa-solid fa-arrow-right slick-next'></i>"
 	});
 	
-	const length = document.getElementById('numOfPlayers').getAttribute('numOfPlayers');
-	console.log(length);
+	const length = <%= players.size() %>;
 	$('input[type=submit]').on('click', e=>{
 		e.preventDefault();
 		for(let i = 0; i < length; i++){
