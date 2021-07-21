@@ -16,25 +16,20 @@ public class ThemeTypeDAO extends parentDAO {
     /**
      * theme_typeテーブルの一覧を取得。
      * @return themeTypeList
+     * @throws SQLException
      */
-    public static List<String> findAll() {
-        
+    public static List<String> findAll() throws SQLException {
         String sql = "SELECT * FROM theme_type;";
-        
         List<String> themeTypeList = new ArrayList<>();
         
-        try(PreparedStatement statement = getConnection().prepareStatement(sql);){
-        	ResultSet result = statement.executeQuery();
-        	while(result.next()) {
-        		String name = result.getString("name");
-        		themeTypeList.add(name);
-        	}
-        	return themeTypeList;
-        }catch(SQLException e) {
-        	e.printStackTrace();
+        PreparedStatement statement = getConnection().prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+        
+        while(result.next()) {
+        	themeTypeList.add(result.getString("name"));
         }
         
-        return null;
+        return themeTypeList;
     }
     
     /**

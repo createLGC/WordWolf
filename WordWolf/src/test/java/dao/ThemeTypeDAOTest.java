@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class ThemeTypeDAOTest {
 
 	@Test
-	void testFindAll() {
+	void testFindAll() throws SQLException {
 		assertEquals(ThemeTypeDAO.findAll(), this.findAllFromCSV());
 	}
 	

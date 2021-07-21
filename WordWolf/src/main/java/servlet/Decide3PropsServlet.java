@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,7 +44,11 @@ public class Decide3PropsServlet extends HttpServlet {
 	
 		g.setWolves(strInt);
 		g.setTalkTime(talkTime);
-		g.setThemes(ThemeDAO.find(themeType));
+		try {
+			g.setThemes(ThemeDAO.find(themeType));
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//フォワード
 		RequestDispatcher dispatcher = 

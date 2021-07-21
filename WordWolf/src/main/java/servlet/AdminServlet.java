@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,14 +63,16 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<String> themeTypeList = ThemeTypeDAO.findAll();
-		List<Map<String, String>> themeList = ThemeDAO.findAll();
-		request.setAttribute("themeTypeList", themeTypeList);
-		request.setAttribute("themeList", themeList);
+		try {
+			request.setAttribute("themeTypeList", ThemeTypeDAO.findAll());
+			request.setAttribute("themeList", ThemeDAO.findAll());
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
 		request
-			.getRequestDispatcher("/WEB-INF/admin.jsp")
-			.forward(request, response);
+		.getRequestDispatcher("/WEB-INF/admin.jsp")
+		.forward(request, response);
 	}
 
 	/**

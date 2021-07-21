@@ -19,32 +19,26 @@ public class ThemeDAO extends parentDAO {
      * theme_typeテーブル、themeテーブルにアクセスし、
      * お題の種類ごとにグループ化された(お題の種類、お題)の一覧を取得
      * @return themeList
+     * @throws SQLException
      */
-	public static List<Map<String, String>> findAll() {
+	public static List<Map<String, String>> findAll() throws SQLException {
 		String sql = "SELECT theme_type.name, theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id ORDER BY theme_type.name";
-        
+		
 		List<Map<String, String>> themeList = new ArrayList<>();
 		
-		try (PreparedStatement statement = getConnection().prepareStatement(sql);) {
-			
-			ResultSet result = statement.executeQuery();
-			
-			while(result.next()) {
-				String name = result.getString("theme_type.name");
-				String theme = result.getString("theme.theme");
-				themeList.add(new HashMap<String, String>(){
-					{
-						put("type", name);
-						put("theme", theme);
-					}
-				});
-			}
-			return themeList;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
+		PreparedStatement statement = getConnection().prepareStatement(sql);
+		ResultSet result = statement.executeQuery();
+		
+		while(result.next()) {
+			themeList.add(new HashMap<String, String>(){
+				{
+					put("type", result.getString("theme_type.name"));
+					put("theme", result.getString("theme.theme"));
+				}
+			});
 		}
-		return null;
+			
+		return themeList;
 	}
 	
 	/**
@@ -52,28 +46,21 @@ public class ThemeDAO extends parentDAO {
      * お題の種類がthemeTypeのものをランダムに二つとってくる。
      * @param themeType
      * @return themeList
+     * @throws SQLException
      */
-    public static List<String> find(String themeType) {
+    public static List<String> find(String themeType) throws SQLException {
         String sql = "SELECT theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id WHERE theme_type.name = ? ORDER BY RAND() LIMIT 2";
-        
         List<String> themeList = new ArrayList<>(2);
         
-        try (PreparedStatement statement = getConnection().prepareStatement(sql);) {
-            
-        	statement.setString(1, themeType);
-            ResultSet result = statement.executeQuery();
-            
-            while(result.next()) {
-            	String theme = result.getString("theme.theme");
-            	themeList.add(theme);
-            }
-            
-            return themeList;
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
+        PreparedStatement statement = getConnection().prepareStatement(sql);
+        statement.setString(1, themeType);
+        ResultSet result = statement.executeQuery();
+        
+        while(result.next()) {
+        	themeList.add(result.getString("theme.theme"));
         }
-        return null;
+        
+        return themeList;
     }
     
     /**

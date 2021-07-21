@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ class GameTest {
 	}
 
 	@Test
-	void testSetThemes() {
+	void testSetThemes() throws SQLException {
 		List<String> themes = ThemeDAO.find("ブランド");
 		Game game = new Game(this.playerNames);
 		game.setWolves(3);
@@ -53,7 +54,7 @@ class GameTest {
 	}
 	
 	@Test
-	void testDecideWinner() {
+	void testDecideWinner() throws SQLException {
 		Game game = new Game(this.playerNames);
 		game.setWolves(2);
 		game.setThemes(ThemeDAO.find("ブランド"));
