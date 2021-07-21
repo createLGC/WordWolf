@@ -23,22 +23,21 @@ public class ThemeDAO extends parentDAO {
      */
 	public static List<Map<String, String>> findAll() throws SQLException {
 		String sql = "SELECT theme_type.name, theme.theme FROM theme JOIN theme_type ON theme.theme_type_id = theme_type.id ORDER BY theme_type.name";
+		
 		List<Map<String, String>> themeList = new ArrayList<>();
 		
 		PreparedStatement statement = getConnection().prepareStatement(sql);
 		ResultSet result = statement.executeQuery();
 		
 		while(result.next()) {
-			String name = result.getString("theme_type.name");
-			String theme = result.getString("theme.theme");
 			themeList.add(new HashMap<String, String>(){
 				{
-					put("type", name);
-					put("theme", theme);
+					put("type", result.getString("theme_type.name"));
+					put("theme", result.getString("theme.theme"));
 				}
 			});
 		}
-		
+			
 		return themeList;
 	}
 	
@@ -58,8 +57,7 @@ public class ThemeDAO extends parentDAO {
         ResultSet result = statement.executeQuery();
         
         while(result.next()) {
-        	String theme = result.getString("theme.theme");
-        	themeList.add(theme);
+        	themeList.add(result.getString("theme.theme"));
         }
         
         return themeList;

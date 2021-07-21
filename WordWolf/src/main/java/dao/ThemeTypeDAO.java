@@ -24,9 +24,9 @@ public class ThemeTypeDAO extends parentDAO {
         
         PreparedStatement statement = getConnection().prepareStatement(sql);
         ResultSet result = statement.executeQuery();
+        
         while(result.next()) {
-        	String name = result.getString("name");
-        	themeTypeList.add(name);
+        	themeTypeList.add(result.getString("name"));
         }
         
         return themeTypeList;
