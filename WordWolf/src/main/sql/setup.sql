@@ -1,4 +1,4 @@
-CREATE SCHEMA `word_wolf` ;
+CREATE SCHEMA `word_wolf`;
 
 CREATE TABLE `word_wolf`.`theme_type` (
   `id` INT NOT NULL AUTO_INCREMENT,
