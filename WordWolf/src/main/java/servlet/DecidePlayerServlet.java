@@ -3,13 +3,11 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ThemeTypeDAO;
 import model.Game;
@@ -40,21 +38,17 @@ public class DecidePlayerServlet extends HttpServlet {
 		Game game = new Game(playerNames);
 		
 		//セッションスコープにGameインスタンスのgameを保存
-		HttpSession session = request.getSession();
-		session.setAttribute("game", game);
+		request.getSession().setAttribute("game", game);
 		
 		//お題の種類の一覧を取得しリクエストスコープに保存
 		try {
 			request.setAttribute("themeTypeList", ThemeTypeDAO.findAll());
+			request
+				.getRequestDispatcher("/jsp/decide3Props.jsp")
+				.forward(request, response);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher
-				("/jsp/decide3Props.jsp");
-		
-		dispatcher.forward(request, response);
 	}
    
 }
