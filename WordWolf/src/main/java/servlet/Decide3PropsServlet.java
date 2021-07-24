@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,21 +39,17 @@ public class Decide3PropsServlet extends HttpServlet {
 		int strInt = Integer.parseInt(numOfWolves);
 		
 		//セッションスコープからGameインスタンスを取得。
-		Game g = (Game)request.getSession().getAttribute("game");
+		Game g = (Game) request.getSession().getAttribute("game");
 	
 		g.setWolves(strInt);
 		g.setTalkTime(talkTime);
 		try {
 			g.setThemes(ThemeDAO.find(themeType));
+			request
+				.getRequestDispatcher("/jsp/noticeThemes.jsp")
+				.forward(request, response);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-		//フォワード
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher
-				("/jsp/noticeThemes.jsp");
-		
-		dispatcher.forward(request, response);
 	}
 }
