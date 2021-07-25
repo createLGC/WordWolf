@@ -50,7 +50,7 @@ abstract class parentDAO {
     	try{
     		Class.forName(DRIVER_PATH);
     		final String jawsdb = System.getenv("JAWSDB_URL");
-    		DATABASE_URL = jawsdb != null ? jawsdb : LOCAL_DATABASE_URL;
+    		DATABASE_URL = jawsdb != null ? "jdbc:" + jawsdb : LOCAL_DATABASE_URL;
     	}catch(ClassNotFoundException e) {
     		e.printStackTrace();
     	}
