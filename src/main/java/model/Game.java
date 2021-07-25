@@ -19,8 +19,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 public class Game {
+	/**
+	 * プレイヤーのリスト
+	 */
 	private List<Player> players;
+	
+	/**
+	 * トークタイム(秒)
+	 */
 	private int talkTime;
+	
+	/**
+	 * 二つのお題
+	 */
 	private Themes themes;
 	
 	/**
@@ -35,8 +46,8 @@ public class Game {
 	 */
 	public Game(String[] playerNames) {
 		this.players = new ArrayList<Player>(playerNames.length);
-		for(int i = 0; i < playerNames.length; i++) {
-			this.players.add(i, new Player(playerNames[i]));
+		for(String playerName: playerNames) {
+			this.players.add(new Player(playerName));
 		}
 	}
 	
