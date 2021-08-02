@@ -24,7 +24,7 @@ Game game = (Game) session.getAttribute("game");
 <form method="POST" action="${pageContext.request.contextPath}/Decide3PropsServlet">
 ウルフの人数
 <p class="spinner_area">
-    <input type="number" value="1" class="counter1" data-max="<%= (game.getPlayers().size() - 1) / 2 %>" data-min="1" name="numOfWolves">
+    <input type="number" value="1" class="counter1" data-max="<%= (game.getPlayers().size() - 1) / 2 %>" data-min="1" name="numOfWolves" readonly>
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </p>

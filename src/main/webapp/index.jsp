@@ -38,7 +38,7 @@ session.removeAttribute("game");
 <p>参加人数</p>
 </div>
 <div class="spinner_area">
-    <input type="number" value="3" class="counter1" data-max="10" data-min="3">
+    <input type="number" value="3" class="counter1" data-max="10" data-min="3" readonly>
     <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
     <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
 </div>
