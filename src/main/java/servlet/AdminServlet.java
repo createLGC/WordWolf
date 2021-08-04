@@ -63,6 +63,12 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		if(!request.getParameter("pwd").equals("admin")) {
+			response.sendRedirect("/WordWolf/");
+			return;
+		}
+		
 		try {
 			request.setAttribute("themeTypeList", ThemeTypeDAO.findAll());
 			request.setAttribute("themeList", ThemeDAO.findAll());
@@ -82,6 +88,7 @@ public class AdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		StringBuffer jb = new StringBuffer();
 		String line = null;
 		try(BufferedReader reader = request.getReader();){

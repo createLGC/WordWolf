@@ -61,8 +61,7 @@ session.removeAttribute("game");
 <script>
 function goToAdmin(){
 	const pwd = window.prompt("パスワードを入力");
-	if(pwd === "admin")
-		location.href = "${pageContext.request.contextPath}/admin";
+	location.href = encodeURI("${pageContext.request.contextPath}/admin?pwd=" + pwd);
 }
 $(window).on('load', ()=>{
 	for(let i = 0; i < $('.counter1').first().val(); i++){

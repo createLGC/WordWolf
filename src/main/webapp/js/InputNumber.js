@@ -24,7 +24,7 @@ $(function(){
 
         //長押し時の処理
         setTimeout(function(){
-            //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理
+            //インターバル未実行中 + 長押しのイベントタイムスタンプ一致時に計算処理
             if(!arySpinnerCtrl.interval && arySpinnerCtrl.timestamp === e.timeStamp){
                 arySpinnerCtrl.interval = setInterval(spinnerCal, SPIN_SPEED);
             }
